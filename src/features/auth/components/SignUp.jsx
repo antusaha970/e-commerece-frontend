@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const SignUp = () => {
   return (
     <>
@@ -9,7 +11,7 @@ const SignUp = () => {
             alt="Your Company"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Sign in to your account
+            Make a new account
           </h2>
         </div>
 
@@ -88,12 +90,12 @@ const SignUp = () => {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Already a member?{" "}
-            <a
-              href="#"
+            <Link
+              to="/login"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               Login Up
-            </a>
+            </Link>
           </p>
         </div>
       </div>
