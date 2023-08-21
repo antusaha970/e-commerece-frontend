@@ -11,7 +11,11 @@ import {
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts, selectProducts } from "../productSlice";
+import {
+  getAllProducts,
+  getFilterProductsAsync,
+  selectProducts,
+} from "../productSlice";
 
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
@@ -237,11 +241,14 @@ const ProductList = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const products = useSelector(selectProducts);
   const dispatch = useDispatch();
+  const [filter, setFilter] = useState({});
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
   const handleFilter = (e, section, option) => {
-    console.log(e.target.value, section, option);
+    const newFilter = { ...filter, [section.id]: option.value };
+    setFilter(newFilter);
+    dispatch(getFilterProductsAsync(newFilter));
   };
   return (
     <>
@@ -483,6 +490,9 @@ const ProductList = () => {
                                     defaultValue={option.value}
                                     type="checkbox"
                                     defaultChecked={option.checked}
+                                    onChange={(e) =>
+                                      handleFilter(e, section, option)
+                                    }
                                     className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                   />
                                   <label
@@ -526,13 +536,13 @@ const ProductList = () => {
                               <div className="mt-4 flex justify-between">
                                 <div>
                                   <h3 className="text-sm text-gray-700">
-                                    <a>
+                                    <p>
                                       <span
                                         aria-hidden="true"
                                         className="absolute inset-0"
                                       />
                                       {product.title}
-                                    </a>
+                                    </p>
                                   </h3>
                                   <p className="mt-1 text-sm text-gray-500 flex items-center">
                                     <StarIcon className="w-4 h-4" />{" "}
