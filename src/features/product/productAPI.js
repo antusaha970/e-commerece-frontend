@@ -42,3 +42,25 @@ export async function fetchFilterProducts(filter, sort, pagination) {
     return error.message;
   }
 }
+
+// For fetching all brands
+export async function fetchAllBrands() {
+  try {
+    const response = await axios.get("http://localhost:8080/brands");
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return error.message;
+  }
+}
+
+// For fetching all categories
+export async function fetchAllCategories() {
+  try {
+    const response = await axios.get("http://localhost:8080/categories");
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return error.message;
+  }
+}
