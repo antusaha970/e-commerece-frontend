@@ -11,12 +11,20 @@ export async function fetchAllProducts() {
   }
 }
 
-// For fetch all products
-export async function fetchFilterProducts(filter) {
+// For fetching filtered products
+export async function fetchFilterProducts(filter, sort) {
+  // filter = {"category" : ["phones","laptops"]}
+  // sort = {_sort: "price", order: "asc"}
   let queryString = "";
-
   for (let key in filter) {
-    queryString += `${key}=${filter[key]}&`;
+    const categoryValues = filter[key];
+    if (categoryValues.length) {
+      const lastValue = categoryValues[categoryValues.length - 1];
+      queryString += `${key}=${lastValue}&`;
+    }
+  }
+  for (let key in sort) {
+    queryString += `${key}=${sort[key]}&`;
   }
   console.log(queryString);
   try {

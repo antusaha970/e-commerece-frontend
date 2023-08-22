@@ -12,11 +12,7 @@ import {
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getAllProducts,
-  getFilterProductsAsync,
-  selectProducts,
-} from "../productSlice";
+import { getFilterProductsAsync, selectProducts } from "../productSlice";
 
 const sortOptions = [
   {
@@ -257,19 +253,34 @@ const ProductList = () => {
   const products = useSelector(selectProducts);
   const dispatch = useDispatch();
   const [filter, setFilter] = useState({});
-  useEffect(() => {
-    dispatch(getAllProducts());
-  }, [dispatch]);
+  const [sort, setSort] = useState({});
+
+  // This function handle filter of category and brands
   const handleFilter = (e, section, option) => {
-    const newFilter = { ...filter, [section.id]: option.value };
+    // filter = {"category" : ["phones","laptops"]}
+    const newFilter = { ...filter };
+    if (e.target.checked) {
+      if (newFilter[section.id]) {
+        newFilter[section.id].push(option.value);
+      } else {
+        newFilter[section.id] = [option.value];
+      }
+    } else {
+      const index = newFilter[section.id].findIndex(
+        (pd) => pd === option.value
+      );
+      newFilter[section.id].splice(index, 1);
+    }
     setFilter(newFilter);
-    dispatch(getFilterProductsAsync(newFilter));
   };
+  // This function handle sorting of products
   const handleSort = (option) => {
-    const newFilter = { ...filter, _sort: option.sort, _order: option.order };
-    setFilter(newFilter);
-    dispatch(getFilterProductsAsync(newFilter));
+    const newSort = { _sort: option.sort, _order: option.order };
+    setSort(newSort);
   };
+  useEffect(() => {
+    dispatch(getFilterProductsAsync({ filter, sort }));
+  }, [dispatch, filter, sort]);
   return (
     <>
       <div className="bg-white">
