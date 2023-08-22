@@ -1930,4 +1930,4 @@ const bd = uniqueBands.map((bd) => {
     checked: false,
   };
 });
-console.log(bd);
+console.log("json-server --watch data.json --port 8080");
