@@ -12,9 +12,10 @@ export async function fetchAllProducts() {
 }
 
 // For fetching filtered products
-export async function fetchFilterProducts(filter, sort) {
+export async function fetchFilterProducts(filter, sort, pagination) {
   // filter = {"category" : ["phones","laptops"]}
   // sort = {_sort: "price", order: "asc"}
+  // pagination = {_page: 1, _limit: 10}
   let queryString = "";
   for (let key in filter) {
     const categoryValues = filter[key];
@@ -26,12 +27,16 @@ export async function fetchFilterProducts(filter, sort) {
   for (let key in sort) {
     queryString += `${key}=${sort[key]}&`;
   }
-  console.log(queryString);
+  for (let key in pagination) {
+    queryString += `${key}=${pagination[key]}&`;
+  }
+
   try {
     const response = await axios.get(
       `http://localhost:8080/products?${queryString}`
     );
-    return response.data;
+    const totalItems = response.headers.get("X-Total-Count");
+    return { products: response.data, totalItems };
   } catch (error) {
     console.error(error);
     return error.message;
