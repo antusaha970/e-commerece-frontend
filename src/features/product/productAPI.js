@@ -43,6 +43,17 @@ export async function fetchFilterProducts(filter, sort, pagination) {
   }
 }
 
+// For fetching product by ID
+export async function fetchProductById(id) {
+  try {
+    const response = await axios.get(`http://localhost:8080/products/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return error.message;
+  }
+}
+
 // For fetching all brands
 export async function fetchAllBrands() {
   try {
