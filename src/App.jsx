@@ -6,31 +6,48 @@ import Home from "./pages/Home";
 import CartPage from "./pages/CartPage";
 import CheckOutPage from "./pages/CheckOutPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import Protected from "./features/auth/components/Protected";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home></Home>,
+    element: (
+      <Protected>
+        <Home />
+      </Protected>
+    ),
   },
   {
     path: "login",
-    element: <LoginPage></LoginPage>,
+    element: <LoginPage />,
   },
   {
     path: "signup",
-    element: <SignUpPage></SignUpPage>,
+    element: <SignUpPage />,
   },
   {
     path: "cart",
-    element: <CartPage></CartPage>,
+    element: (
+      <Protected>
+        <CartPage />
+      </Protected>
+    ),
   },
   {
     path: "checkout",
-    element: <CheckOutPage></CheckOutPage>,
+    element: (
+      <Protected>
+        <CheckOutPage />
+      </Protected>
+    ),
   },
   {
     path: "product-details/:id",
-    element: <ProductDetailsPage></ProductDetailsPage>,
+    element: (
+      <Protected>
+        <ProductDetailsPage />
+      </Protected>
+    ),
   },
 ]);
 
