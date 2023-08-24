@@ -4,6 +4,8 @@ import { RadioGroup } from "@headlessui/react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductByIdAsync, selectProductById } from "../productSlice";
+import { selectLoggedInUser } from "../../auth/authSlice";
+import { addToCartAsync } from "../../cart/cartSlice";
 
 // const product = {
 //   breadcrumbs: [
@@ -67,10 +69,16 @@ export default function ProductDetails() {
   const params = useParams();
   const product = useSelector(selectProductById);
   const dispatch = useDispatch();
+  const user = useSelector(selectLoggedInUser);
   useEffect(() => {
     dispatch(getProductByIdAsync(params.id));
   }, [dispatch, params.id]);
-
+  console.log(user);
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    const cartItem = { ...product, user: user[0].id };
+    dispatch(addToCartAsync(cartItem));
+  };
   return (
     <>
       {product && (
@@ -318,8 +326,9 @@ export default function ProductDetails() {
                   <button
                     type="submit"
                     className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    onClick={handleAddToCart}
                   >
-                    Add to bag
+                    Add to cart
                   </button>
                 </form>
               </div>

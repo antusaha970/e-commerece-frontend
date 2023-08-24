@@ -6,6 +6,8 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectCartItems } from "../cart/cartSlice";
 
 const user = {
   name: "Tom Cook",
@@ -32,6 +34,7 @@ function classNames(...classes) {
 
 // eslint-disable-next-line react/prop-types
 const NavBar = ({ children }) => {
+  const cartItems = useSelector(selectCartItems);
   return (
     <>
       <div className="min-h-full">
@@ -42,11 +45,13 @@ const NavBar = ({ children }) => {
                 <div className="flex h-16 items-center justify-between">
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
-                      <img
-                        className="h-8 w-8"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                        alt="Your Company"
-                      />
+                      <Link to="/">
+                        <img
+                          className="h-8 w-8"
+                          src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                          alt="Your Company"
+                        />
+                      </Link>
                     </div>
                     <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">
@@ -83,9 +88,11 @@ const NavBar = ({ children }) => {
                           />
                         </button>
                       </Link>
-                      <span className="inline-flex items-center mr-1 mb-7 rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
-                        3
-                      </span>
+                      {cartItems.length > 0 && (
+                        <span className="inline-flex items-center mr-1 mb-7 rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
+                          {cartItems.length}
+                        </span>
+                      )}
 
                       {/* Profile dropdown */}
                       <Menu as="div" className="relative ml-3">
@@ -200,9 +207,11 @@ const NavBar = ({ children }) => {
                         />
                       </button>
                     </Link>
-                    <span className="inline-flex items-center mr-1 mb-7 rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
-                      3
-                    </span>
+                    {cartItems.length > 0 && (
+                      <span className="inline-flex items-center mr-1 mb-7 rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
+                        {cartItems.length}
+                      </span>
+                    )}
                   </div>
                   <div className="mt-3 space-y-1 px-2">
                     {userNavigation.map((item) => (
