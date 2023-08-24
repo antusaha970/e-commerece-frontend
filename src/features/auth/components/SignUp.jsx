@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { createUserAsync } from "../authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { createUserAsync, selectLoggedInUser } from "../authSlice";
+import { useEffect } from "react";
 
 const SignUp = () => {
   const {
@@ -10,9 +11,16 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
   const dispatch = useDispatch();
+  const user = useSelector(selectLoggedInUser);
   const onSubmit = (data) => {
     dispatch(createUserAsync(data));
   };
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user) {
+      navigate("/", { replace: true });
+    }
+  }, [user, navigate]);
 
   return (
     <>
