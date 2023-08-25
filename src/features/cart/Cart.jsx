@@ -1,10 +1,26 @@
 import { Link } from "react-router-dom";
-import { selectCartItems } from "./cartSlice";
-import { useSelector } from "react-redux";
+import {
+  deleteItemFromCartAsync,
+  selectCartItems,
+  updateCartAsync,
+} from "./cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Cart = () => {
   const cartItems = useSelector(selectCartItems);
-  const subTotal = cartItems.reduce((acc, item) => acc + item.price, 0);
+  console.log(cartItems);
+  const subTotal = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+  const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  const dispatch = useDispatch();
+  const handleUpdateQty = (e, product) => {
+    dispatch(updateCartAsync({ ...product, quantity: +e.target.value }));
+  };
+  const handleDeleteItem = (product) => {
+    dispatch(deleteItemFromCartAsync(product.id));
+  };
   return (
     <div className="mx-auto bg-white rounded-sm shadow-sm max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="mt-8 border-t border-gray-200 px-4 py-6 sm:px-6">
@@ -37,8 +53,11 @@ const Cart = () => {
                   </div>
                   <div className="flex flex-1 items-end justify-between text-sm">
                     <div className="flex items-center gap-3">
-                      <p className="text-gray-500">Qty {product.quantity}</p>
-                      <select name="" id="">
+                      <p className="text-gray-500">Qty </p>
+                      <select
+                        onChange={(e) => handleUpdateQty(e, product)}
+                        value={product.quantity}
+                      >
                         <option value="1">1</option>
                         <option value="2">2</option>
                       </select>
@@ -47,6 +66,7 @@ const Cart = () => {
                       <button
                         type="button"
                         className="font-medium text-indigo-600 hover:text-indigo-500"
+                        onClick={() => handleDeleteItem(product)}
                       >
                         Remove
                       </button>
@@ -66,7 +86,7 @@ const Cart = () => {
         </div>
         <div className="flex justify-between my-4 text-base font-medium text-gray-900">
           <p>Total Items</p>
-          <p>{cartItems.length}</p>
+          <p>{totalItems}</p>
         </div>
         <p className="mt-0.5 text-sm text-gray-500">
           Shipping and taxes calculated at checkout.

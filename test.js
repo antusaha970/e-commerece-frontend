@@ -1920,14 +1920,6 @@ const products = [
     ],
   },
 ];
-
-const brands = products.map((pd) => pd.category);
-const uniqueBands = [...new Set(brands)];
-const bd = uniqueBands.map((bd) => {
-  return {
-    value: bd,
-    label: bd,
-    checked: false,
-  };
-});
-console.log("json-server --watch data.json --port 8080");
+products.splice(0, 50);
+const updatedProduct = products.map((pd) => ({ ...pd, quantity: 1 }));
+console.log(updatedProduct);
