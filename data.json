@@ -2437,122 +2437,77 @@
   "users": [
     {
       "email": "admin@gym.com",
-      "password": "antu1",
-      "confirmPassword": "antu1",
+      "password": "pppp1",
+      "confirmPassword": "pppp1",
+      "addresses": [
+        {
+          "fullName": "antu saha",
+          "email": "raju2@gmail.com",
+          "phoneNumber": "01748656711",
+          "country": "Canada",
+          "streetAddress": "feni",
+          "city": "Feni",
+          "region": "feni",
+          "pinCode": "6666"
+        }
+      ],
       "id": 1
     },
     {
-      "email": "admin@gym.com",
-      "password": "antu1",
-      "confirmPassword": "antu1",
+      "email": "antusaha970@gmail.com",
+      "password": "ffff1",
+      "confirmPassword": "ffff1",
+      "addresses": [
+        {
+          "fullName": "antu saha",
+          "email": "admin@gym.com",
+          "phoneNumber": "01748656711",
+          "country": "United States",
+          "streetAddress": "shodevpur",
+          "city": "feni",
+          "region": "feni",
+          "pinCode": "6666"
+        },
+        {
+          "fullName": "antu saha",
+          "email": "antusaha970@gmail.com",
+          "phoneNumber": "01748656711",
+          "country": "Mexico",
+          "streetAddress": "shodevpur",
+          "city": "feni",
+          "region": "feni",
+          "pinCode": "0025"
+        }
+      ],
       "id": 2
     },
     {
-      "email": "antu.digi.88@gmail.com",
-      "password": "antu1",
-      "confirmPassword": "antu1",
+      "email": "admin2@gym.com",
+      "password": "pppp1",
+      "confirmPassword": "pppp1",
+      "addresses": [],
       "id": 3
-    },
-    {
-      "email": "antu.digi.88@gmail.com",
-      "password": "antu1",
-      "confirmPassword": "antu1",
-      "id": 4
-    },
-    {
-      "email": "antu.digi.88@gmail.com",
-      "password": "antu1",
-      "confirmPassword": "antu1",
-      "id": 5
-    },
-    {
-      "email": "antu.digi.88@gmail.com",
-      "password": "antu1",
-      "confirmPassword": "antu1",
-      "id": 6
-    },
-    {
-      "email": "antu.digi.88@gmail.com",
-      "password": "antu1",
-      "confirmPassword": "antu1",
-      "id": 7
-    },
-    {
-      "email": "antusaha970@gmail.com",
-      "password": "antu1",
-      "confirmPassword": "antu1",
-      "id": 8
-    },
-    {
-      "email": "raju2@gmail.com",
-      "password": "antu2",
-      "confirmPassword": "antu2",
-      "id": 9
-    },
-    {
-      "email": "antusaha990@gmail.com",
-      "password": "antu1",
-      "confirmPassword": "antu1",
-      "id": 10
     }
   ],
   "cart": [
     {
-      "id": 3,
-      "title": "Samsung Universe 9",
-      "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
-      "price": 1249,
-      "discountPercentage": 15.46,
-      "rating": 4.09,
-      "stock": 36,
-      "brand": "Samsung",
+      "id": 2,
+      "title": "iPhone X",
+      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+      "price": 899,
+      "discountPercentage": 17.94,
+      "rating": 4.44,
+      "stock": 34,
+      "brand": "Apple",
       "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
+      "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
       "images": [
-        "https://i.dummyjson.com/data/products/3/1.jpg"
+        "https://i.dummyjson.com/data/products/2/1.jpg",
+        "https://i.dummyjson.com/data/products/2/2.jpg",
+        "https://i.dummyjson.com/data/products/2/3.jpg",
+        "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
       ],
-      "quantity": 1,
-      "user": 9
-    },
-    {
-      "id": 8,
-      "title": "Microsoft Surface Laptop 4",
-      "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
-      "price": 1499,
-      "discountPercentage": 10.23,
-      "rating": 4.43,
-      "stock": 68,
-      "brand": "Microsoft Surface",
-      "category": "laptops",
-      "thumbnail": "https://i.dummyjson.com/data/products/8/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/8/1.jpg",
-        "https://i.dummyjson.com/data/products/8/2.jpg",
-        "https://i.dummyjson.com/data/products/8/3.jpg",
-        "https://i.dummyjson.com/data/products/8/4.jpg",
-        "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
-      ],
-      "quantity": 1,
-      "user": 9
-    },
-    {
-      "id": 5,
-      "title": "Huawei P30",
-      "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
-      "price": 499,
-      "discountPercentage": 10.58,
-      "rating": 4.09,
-      "stock": 32,
-      "brand": "Huawei",
-      "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/5/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/5/1.jpg",
-        "https://i.dummyjson.com/data/products/5/2.jpg",
-        "https://i.dummyjson.com/data/products/5/3.jpg"
-      ],
-      "quantity": 2,
-      "user": 9
+      "quantity": 1
     }
   ]
 }

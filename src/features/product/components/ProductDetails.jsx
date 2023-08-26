@@ -76,7 +76,7 @@ export default function ProductDetails() {
   console.log(user);
   const handleAddToCart = (e) => {
     e.preventDefault();
-    const cartItem = { ...product, user: user[0].id };
+    const cartItem = { ...product, user: user.id };
     dispatch(addToCartAsync(cartItem));
   };
   return (

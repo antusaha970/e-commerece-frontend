@@ -59,8 +59,9 @@ function App() {
   const user = useSelector(selectLoggedInUser);
   const dispatch = useDispatch();
   useEffect(() => {
+    console.log(user);
     if (user) {
-      dispatch(getCartItemsAsync(user[0].id));
+      dispatch(getCartItemsAsync(user.id));
     }
   }, [user, dispatch]);
   return (

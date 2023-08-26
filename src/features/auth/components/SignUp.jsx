@@ -13,7 +13,7 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
   const onSubmit = (data) => {
-    dispatch(createUserAsync(data));
+    dispatch(createUserAsync({ ...data, addresses: [] }));
   };
   const navigate = useNavigate();
   useEffect(() => {
