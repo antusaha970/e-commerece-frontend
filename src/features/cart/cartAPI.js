@@ -46,3 +46,17 @@ export async function deleteItemFromCart(itemId) {
     return error.message;
   }
 }
+
+// For deleting item from the cart
+export async function resetCart(userId) {
+  try {
+    const items = await loadItemsToCart(userId);
+    for (let item of items) {
+      await deleteItemFromCart(item.id);
+    }
+    return { status: "done" };
+  } catch (error) {
+    console.error(error);
+    return error.message;
+  }
+}

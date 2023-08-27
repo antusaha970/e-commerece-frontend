@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addToCart, loadItemsToCart, updateCart } from "./cartAPI";
+import { addToCart, loadItemsToCart, resetCart, updateCart } from "./cartAPI";
 
 const initialState = {
   items: [],
@@ -37,6 +37,11 @@ export const deleteItemFromCartAsync = createAsyncThunk(
     return response;
   }
 );
+
+export const resetCartAsync = createAsyncThunk("cart/resetCart", async (id) => {
+  const response = await resetCart(id);
+  return response;
+});
 
 export const cartSlice = createSlice({
   name: "cart",
@@ -89,6 +94,13 @@ export const cartSlice = createSlice({
       })
       .addCase(deleteItemFromCartAsync.rejected, (state) => {
         state.status = "failed";
+      })
+      .addCase(resetCartAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(resetCartAsync.fulfilled, (state) => {
+        state.status = "idle";
+        state.items = [];
       });
   },
 });

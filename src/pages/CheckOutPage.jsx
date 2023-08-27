@@ -11,8 +11,12 @@ import {
   selectLoggedInUser,
   updateUserAsync,
 } from "../features/auth/authSlice";
-import { createOrderAsync } from "../features/order/orderSlice";
-
+import {
+  createOrderAsync,
+  selectCurrentOrder,
+} from "../features/order/orderSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const CheckOutPage = () => {
   const {
     register,
@@ -22,6 +26,7 @@ const CheckOutPage = () => {
   } = useForm();
   const user = useSelector(selectLoggedInUser);
   const cartItems = useSelector(selectCartItems);
+  const currentOrder = useSelector(selectCurrentOrder);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("cash");
   const navigate = useNavigate();
@@ -63,20 +68,39 @@ const CheckOutPage = () => {
   };
 
   const handleOrder = () => {
-    const order = {
-      cartItems,
-      totalItems,
-      subTotal,
-      user,
-      paymentMethod,
-      selectedAddress,
-      status: "pending",
-    };
-    dispatch(createOrderAsync(order));
+    if (paymentMethod && selectedAddress) {
+      const order = {
+        cartItems,
+        totalItems,
+        subTotal,
+        user,
+        paymentMethod,
+        selectedAddress,
+        status: "pending",
+      };
+      dispatch(createOrderAsync(order));
+    } else {
+      toast.warn("Please select address and payment method!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   };
+  useEffect(() => {
+    if (currentOrder) {
+      navigate(`/order-success/${currentOrder.id}`, { replace: true });
+    }
+  }, [currentOrder, navigate]);
 
   return (
     <>
+      <ToastContainer />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
           <div className="lg:col-span-3">
