@@ -8,7 +8,7 @@ const initialState = {
 };
 
 export const createUserAsync = createAsyncThunk(
-  "user/createUser",
+  "auth/createUser",
   async (userData) => {
     const response = await createUser(userData);
     return response;
@@ -16,7 +16,7 @@ export const createUserAsync = createAsyncThunk(
 );
 
 export const checkUserAsync = createAsyncThunk(
-  "user/checkUser",
+  "auth/checkUser",
   async (loginInfo) => {
     const response = await checkUser(loginInfo);
     return response;
@@ -24,7 +24,7 @@ export const checkUserAsync = createAsyncThunk(
 );
 
 export const updateUserAsync = createAsyncThunk(
-  "user/updateUser",
+  "auth/updateUser",
   async (userData) => {
     const response = await updateUser(userData);
     return response;
@@ -32,7 +32,7 @@ export const updateUserAsync = createAsyncThunk(
 );
 
 export const authSlice = createSlice({
-  name: "user",
+  name: "auth",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -74,7 +74,7 @@ export const authSlice = createSlice({
 // export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 
 // Selectors
-export const selectLoggedInUser = (state) => state.user.loggedInUser;
-export const selectLoginError = (state) => state.user.error;
+export const selectLoggedInUser = (state) => state.auth.loggedInUser;
+export const selectLoginError = (state) => state.auth.error;
 
 export default authSlice.reducer;

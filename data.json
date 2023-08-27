@@ -2720,6 +2720,64 @@
       },
       "status": "pending",
       "id": 4
+    },
+    {
+      "cartItems": [
+        {
+          "id": 39,
+          "title": "Women Sweaters Wool",
+          "description": "2021 Custom Winter Fall Zebra Knit Crop Top Women Sweaters Wool Mohair Cos Customize Crew Neck Women' S Crop Top Sweater",
+          "price": 600,
+          "discountPercentage": 17.2,
+          "rating": 4.55,
+          "stock": 55,
+          "brand": "Top Sweater",
+          "category": "tops",
+          "thumbnail": "https://i.dummyjson.com/data/products/39/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/39/1.jpg",
+            "https://i.dummyjson.com/data/products/39/2.jpg",
+            "https://i.dummyjson.com/data/products/39/3.jpg",
+            "https://i.dummyjson.com/data/products/39/4.jpg",
+            "https://i.dummyjson.com/data/products/39/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1
+        }
+      ],
+      "totalItems": 1,
+      "subTotal": 600,
+      "user": {
+        "email": "antusaha970@gmail.com",
+        "password": "antu1",
+        "confirmPassword": "antu1",
+        "addresses": [
+          {
+            "fullName": "antu saha",
+            "email": "admin@gym.com",
+            "phoneNumber": "01748656711",
+            "country": "United States",
+            "streetAddress": "feni",
+            "city": "Feni",
+            "region": "feni",
+            "pinCode": "6666"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "fullName": "antu saha",
+        "email": "admin@gym.com",
+        "phoneNumber": "01748656711",
+        "country": "United States",
+        "streetAddress": "feni",
+        "city": "Feni",
+        "region": "feni",
+        "pinCode": "6666"
+      },
+      "status": "pending",
+      "id": 5
     }
   ]
 }

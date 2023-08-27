@@ -13,6 +13,7 @@ import { selectLoggedInUser } from "./features/auth/authSlice";
 import { getCartItemsAsync } from "./features/cart/cartSlice";
 import NotFound404 from "./pages/NotFound404";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
+import UserOrderPage from "./pages/UserOrderPage";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,14 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "user-orders",
+    element: (
+      <Protected>
+        <UserOrderPage />
+      </Protected>
+    ),
+  },
+  {
     path: "*",
     element: <NotFound404 />,
   },
@@ -73,7 +82,6 @@ function App() {
   const user = useSelector(selectLoggedInUser);
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log(user);
     if (user) {
       dispatch(getCartItemsAsync(user.id));
     }
