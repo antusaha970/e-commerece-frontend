@@ -14,6 +14,7 @@ import { getCartItemsAsync } from "./features/cart/cartSlice";
 import NotFound404 from "./pages/NotFound404";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
 import UserOrderPage from "./pages/UserOrderPage";
+import UserProfilePage from "./pages/UserProfilePage";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,14 @@ const router = createBrowserRouter([
     element: (
       <Protected>
         <UserOrderPage />
+      </Protected>
+    ),
+  },
+  {
+    path: "user-profile",
+    element: (
+      <Protected>
+        <UserProfilePage />
       </Protected>
     ),
   },

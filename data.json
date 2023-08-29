@@ -2449,6 +2449,16 @@
           "city": "Feni",
           "region": "feni",
           "pinCode": "6666"
+        },
+        {
+          "fullName": "raju ",
+          "email": "raju.2@gmail.com",
+          "phoneNumber": "01748656711",
+          "country": "Mexico",
+          "streetAddress": "shodevpur",
+          "city": "Cumilla",
+          "region": "cumilla ",
+          "pinCode": "1111"
         }
       ],
       "id": 1
@@ -2778,6 +2788,152 @@
       },
       "status": "pending",
       "id": 5
+    },
+    {
+      "cartItems": [
+        {
+          "id": 23,
+          "title": "Orange Essence Food Flavou",
+          "description": "Specifications of Orange Essence Food Flavour For Cakes and Baking Food Item",
+          "price": 14,
+          "discountPercentage": 8.04,
+          "rating": 4.85,
+          "stock": 26,
+          "brand": "Baking Food Items",
+          "category": "groceries",
+          "thumbnail": "https://i.dummyjson.com/data/products/23/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/23/1.jpg",
+            "https://i.dummyjson.com/data/products/23/2.jpg",
+            "https://i.dummyjson.com/data/products/23/3.jpg",
+            "https://i.dummyjson.com/data/products/23/4.jpg",
+            "https://i.dummyjson.com/data/products/23/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1
+        },
+        {
+          "id": 97,
+          "title": "Metal Ceramic Flower",
+          "description": "Metal Ceramic Flower Chandelier Home Lighting American Vintage Hanging Lighting Pendant Lamp",
+          "price": 35,
+          "discountPercentage": 10.94,
+          "rating": 4.93,
+          "stock": 146,
+          "brand": "Ifei Home",
+          "category": "lighting",
+          "thumbnail": "https://i.dummyjson.com/data/products/97/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/97/1.jpg",
+            "https://i.dummyjson.com/data/products/97/2.jpg",
+            "https://i.dummyjson.com/data/products/97/3.jpg",
+            "https://i.dummyjson.com/data/products/97/4.webp",
+            "https://i.dummyjson.com/data/products/97/thumbnail.jpg"
+          ],
+          "quantity": 2,
+          "user": 1
+        }
+      ],
+      "totalItems": 3,
+      "subTotal": 84,
+      "user": {
+        "email": "antusaha970@gmail.com",
+        "password": "antu1",
+        "confirmPassword": "antu1",
+        "addresses": [
+          {
+            "fullName": "antu saha",
+            "email": "admin@gym.com",
+            "phoneNumber": "01748656711",
+            "country": "United States",
+            "streetAddress": "feni",
+            "city": "Feni",
+            "region": "feni",
+            "pinCode": "6666"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "fullName": "antu saha",
+        "email": "admin@gym.com",
+        "phoneNumber": "01748656711",
+        "country": "United States",
+        "streetAddress": "feni",
+        "city": "Feni",
+        "region": "feni",
+        "pinCode": "6666"
+      },
+      "status": "pending",
+      "id": 6
+    },
+    {
+      "cartItems": [
+        {
+          "id": 6,
+          "title": "MacBook Pro",
+          "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+          "price": 1749,
+          "discountPercentage": 11.02,
+          "rating": 4.57,
+          "stock": 83,
+          "brand": "Apple",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
+          "images": [
+            "https://i.dummyjson.com/data/products/6/1.png",
+            "https://i.dummyjson.com/data/products/6/2.jpg",
+            "https://i.dummyjson.com/data/products/6/3.png",
+            "https://i.dummyjson.com/data/products/6/4.jpg"
+          ],
+          "quantity": 1,
+          "user": 1
+        }
+      ],
+      "totalItems": 1,
+      "subTotal": 1749,
+      "user": {
+        "email": "antusaha970@gmail.com",
+        "password": "antu1",
+        "confirmPassword": "antu1",
+        "addresses": [
+          {
+            "fullName": "antu saha",
+            "email": "admin@gym.com",
+            "phoneNumber": "01748656711",
+            "country": "United States",
+            "streetAddress": "feni",
+            "city": "Feni",
+            "region": "feni",
+            "pinCode": "6666"
+          },
+          {
+            "fullName": "raju ",
+            "email": "raju.2@gmail.com",
+            "phoneNumber": "01748656711",
+            "country": "Mexico",
+            "streetAddress": "shodevpur",
+            "city": "Cumilla",
+            "region": "cumilla ",
+            "pinCode": "1111"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "fullName": "raju ",
+        "email": "raju.2@gmail.com",
+        "phoneNumber": "01748656711",
+        "country": "Mexico",
+        "streetAddress": "shodevpur",
+        "city": "Cumilla",
+        "region": "cumilla ",
+        "pinCode": "1111"
+      },
+      "status": "pending",
+      "id": 7
     }
   ]
 }
