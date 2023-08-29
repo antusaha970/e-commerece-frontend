@@ -2441,16 +2441,6 @@
       "confirmPassword": "antu1",
       "addresses": [
         {
-          "fullName": "antu saha",
-          "email": "admin@gym.com",
-          "phoneNumber": "01748656711",
-          "country": "United States",
-          "streetAddress": "feni",
-          "city": "Feni",
-          "region": "feni",
-          "pinCode": "6666"
-        },
-        {
           "fullName": "raju ",
           "email": "raju.2@gmail.com",
           "phoneNumber": "01748656711",
@@ -2459,6 +2449,26 @@
           "city": "Cumilla",
           "region": "cumilla ",
           "pinCode": "1111"
+        },
+        {
+          "fullName": "antu saha",
+          "email": "antusaha990@gmail.com",
+          "phoneNumber": "01748656722",
+          "country": "United States",
+          "streetAddress": "shodevpur",
+          "city": "akldjfadlj",
+          "region": "feni",
+          "pinCode": "1111"
+        },
+        {
+          "fullName": "Jack Speraoo ",
+          "email": "antu.digi.10@gmail.com",
+          "phoneNumber": "01748656722",
+          "country": "Mexico",
+          "streetAddress": "feni",
+          "city": "akldjfadlj",
+          "region": "feni",
+          "pinCode": "0025"
         }
       ],
       "id": 1
@@ -2500,7 +2510,28 @@
       "id": 3
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "id": 7,
+      "title": "Samsung Galaxy Book",
+      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+      "price": 1499,
+      "discountPercentage": 4.15,
+      "rating": 4.25,
+      "stock": 50,
+      "brand": "Samsung",
+      "category": "laptops",
+      "thumbnail": "https://i.dummyjson.com/data/products/7/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/7/1.jpg",
+        "https://i.dummyjson.com/data/products/7/2.jpg",
+        "https://i.dummyjson.com/data/products/7/3.jpg",
+        "https://i.dummyjson.com/data/products/7/thumbnail.jpg"
+      ],
+      "quantity": 1,
+      "user": 1
+    }
+  ],
   "orders": [
     {
       "cartItems": [
@@ -2934,6 +2965,150 @@
       },
       "status": "pending",
       "id": 7
+    },
+    {
+      "cartItems": [
+        {
+          "id": 5,
+          "title": "Huawei P30",
+          "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
+          "price": 499,
+          "discountPercentage": 10.58,
+          "rating": 4.09,
+          "stock": 32,
+          "brand": "Huawei",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/5/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/5/1.jpg",
+            "https://i.dummyjson.com/data/products/5/2.jpg",
+            "https://i.dummyjson.com/data/products/5/3.jpg"
+          ],
+          "quantity": 1,
+          "user": 1
+        }
+      ],
+      "totalItems": 1,
+      "subTotal": 499,
+      "user": {
+        "email": "antusaha970@gmail.com",
+        "password": "antu1",
+        "confirmPassword": "antu1",
+        "addresses": [
+          {
+            "fullName": "antu saha",
+            "email": "admin@gym.com",
+            "phoneNumber": "01748656711",
+            "country": "United States",
+            "streetAddress": "feni",
+            "city": "Feni",
+            "region": "feni",
+            "pinCode": "6666"
+          },
+          {
+            "fullName": "raju ",
+            "email": "raju.2@gmail.com",
+            "phoneNumber": "01748656711",
+            "country": "Mexico",
+            "streetAddress": "shodevpur",
+            "city": "Cumilla",
+            "region": "cumilla ",
+            "pinCode": "1111"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "fullName": "raju ",
+        "email": "raju.2@gmail.com",
+        "phoneNumber": "01748656711",
+        "country": "Mexico",
+        "streetAddress": "shodevpur",
+        "city": "Cumilla",
+        "region": "cumilla ",
+        "pinCode": "1111"
+      },
+      "status": "pending",
+      "id": 8
+    },
+    {
+      "cartItems": [
+        {
+          "id": 12,
+          "title": "Brown Perfume",
+          "description": "Royal_Mirage Sport Brown Perfume for Men & Women - 120ml",
+          "price": 40,
+          "discountPercentage": 15.66,
+          "rating": 4,
+          "stock": 52,
+          "brand": "Royal_Mirage",
+          "category": "fragrances",
+          "thumbnail": "https://i.dummyjson.com/data/products/12/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/12/1.jpg",
+            "https://i.dummyjson.com/data/products/12/2.jpg",
+            "https://i.dummyjson.com/data/products/12/3.png",
+            "https://i.dummyjson.com/data/products/12/4.jpg",
+            "https://i.dummyjson.com/data/products/12/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1
+        }
+      ],
+      "totalItems": 1,
+      "subTotal": 40,
+      "user": {
+        "email": "antusaha970@gmail.com",
+        "password": "antu1",
+        "confirmPassword": "antu1",
+        "addresses": [
+          {
+            "fullName": "antu saha",
+            "email": "admin@gym.com",
+            "phoneNumber": "01748656711",
+            "country": "United States",
+            "streetAddress": "feni",
+            "city": "Feni",
+            "region": "feni",
+            "pinCode": "6666"
+          },
+          {
+            "fullName": "raju ",
+            "email": "raju.2@gmail.com",
+            "phoneNumber": "01748656711",
+            "country": "Mexico",
+            "streetAddress": "shodevpur",
+            "city": "Cumilla",
+            "region": "cumilla ",
+            "pinCode": "1111"
+          },
+          {
+            "fullName": "antu saha",
+            "email": "antusaha990@gmail.com",
+            "phoneNumber": "01748656711",
+            "country": "United States",
+            "streetAddress": "shodevpur",
+            "city": "akldjfadlj",
+            "region": "feni",
+            "pinCode": "1111"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "fullName": "antu saha",
+        "email": "antusaha990@gmail.com",
+        "phoneNumber": "01748656711",
+        "country": "United States",
+        "streetAddress": "shodevpur",
+        "city": "akldjfadlj",
+        "region": "feni",
+        "pinCode": "1111"
+      },
+      "status": "pending",
+      "id": 9
     }
   ]
 }

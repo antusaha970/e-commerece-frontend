@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { checkUser, createUser, updateUser } from "./authAPI";
+import { checkUser, createUser } from "./authAPI";
+import { updateUserAsync } from "../user/userSlice";
 
 const initialState = {
   loggedInUser: null,
@@ -19,14 +20,6 @@ export const checkUserAsync = createAsyncThunk(
   "auth/checkUser",
   async (loginInfo) => {
     const response = await checkUser(loginInfo);
-    return response;
-  }
-);
-
-export const updateUserAsync = createAsyncThunk(
-  "auth/updateUser",
-  async (userData) => {
-    const response = await updateUser(userData);
     return response;
   }
 );

@@ -15,6 +15,7 @@ import NotFound404 from "./pages/NotFound404";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
 import UserOrderPage from "./pages/UserOrderPage";
 import UserProfilePage from "./pages/UserProfilePage";
+import { getLoggedInUserInfoAsync } from "./features/user/userSlice";
 
 const router = createBrowserRouter([
   {
@@ -93,6 +94,7 @@ function App() {
   useEffect(() => {
     if (user) {
       dispatch(getCartItemsAsync(user.id));
+      dispatch(getLoggedInUserInfoAsync(user.id));
     }
   }, [user, dispatch]);
   return (
