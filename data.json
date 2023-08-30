@@ -2526,6 +2526,14 @@
         }
       ],
       "id": 4
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "antu1",
+      "confirmPassword": "antu1",
+      "addresses": [],
+      "role": "admin",
+      "id": 5
     }
   ],
   "cart": [
