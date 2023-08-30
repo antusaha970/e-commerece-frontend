@@ -411,49 +411,58 @@ function ProductGrid({ products }) {
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">
             Customers also purchased
           </h2>
+          <Link to={"/admin/add-product-form"}>
+            <button className="rounded-md bg-yellow-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-yellow-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600 mt-5">
+              Add Products
+            </button>
+          </Link>
 
           <div className="mt-6 grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-5">
             {products?.map((product) => (
-              <div
-                key={product.id}
-                className="group relative border border-solid border-gray-400 p-1"
-              >
-                <Link to={`/product-details/${product.id}`}>
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
-                    <img
-                      src={product.thumbnail}
-                      alt={product.title}
-                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                    />
-                  </div>
-                  <div className="mt-4 flex justify-between">
-                    <div>
-                      <h3 className="text-sm text-gray-700">
-                        <p>
-                          <span
-                            aria-hidden="true"
-                            className="absolute inset-0"
-                          />
-                          {product.title}
+              <div key={product.id}>
+                <div className="group relative border border-solid border-gray-400 p-1">
+                  <Link to={`/product-details/${product.id}`}>
+                    <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
+                      <img
+                        src={product.thumbnail}
+                        alt={product.title}
+                        className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                      />
+                    </div>
+                    <div className="mt-4 flex justify-between">
+                      <div>
+                        <h3 className="text-sm text-gray-700">
+                          <p>
+                            <span
+                              aria-hidden="true"
+                              className="absolute inset-0"
+                            />
+                            {product.title}
+                          </p>
+                        </h3>
+                        <p className="mt-1 text-sm text-gray-500 flex items-center">
+                          <StarIcon className="w-4 h-4" /> {product.rating}
                         </p>
-                      </h3>
-                      <p className="mt-1 text-sm text-gray-500 flex items-center">
-                        <StarIcon className="w-4 h-4" /> {product.rating}
-                      </p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-gray-900">
+                          $
+                          {(
+                            product.price *
+                            (1 - product.discountPercentage / 100)
+                          ).toFixed(2)}
+                        </p>
+                        <p className="text-sm line-through font-medium text-gray-400">
+                          ${product.price.toFixed(2)}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm font-medium text-gray-900">
-                        $
-                        {(
-                          product.price *
-                          (1 - product.discountPercentage / 100)
-                        ).toFixed(2)}
-                      </p>
-                      <p className="text-sm line-through font-medium text-gray-400">
-                        ${product.price.toFixed(2)}
-                      </p>
-                    </div>
-                  </div>
+                  </Link>
+                </div>
+                <Link>
+                  <button className="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 mt-5">
+                    Edit Product
+                  </button>
                 </Link>
               </div>
             ))}

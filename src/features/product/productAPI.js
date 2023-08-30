@@ -75,3 +75,17 @@ export async function fetchAllCategories() {
     return error.message;
   }
 }
+
+// For create a new product
+export async function createProduct(product) {
+  try {
+    const response = await axios.post(
+      "http://localhost:8080/products",
+      product
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return error.message;
+  }
+}

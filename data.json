@@ -1938,6 +1938,25 @@
         "https://i.dummyjson.com/data/products/100/thumbnail.jpg"
       ],
       "quantity": 1
+    },
+    {
+      "title": "Samsung z-fold",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat sollicitudin malesuada. Phasellus congue accumsan sem, eget convallis erat semper vel. Aliquam erat volutpat. Nulla vulputate, nibh vitae faucibus ultricies, erat purus varius libero, et eleifend nunc lacus nec odio. Aliquam fringilla, dui ut consequat suscipit, erat orci efficitur neque, ut viverra lectus mi faucibus leo. Quisque in erat at diam lacinia efficitur. Vivamus ultrices volutpat sem, sit amet dignissim urna. Fusce et nulla a velit tempor pharetra. Suspendisse ac ultricies velit. Integer facilisis dolor et orci sagittis, nec feugiat libero blandit. Pellentesque at varius nisi. Sed laoreet tellus vitae quam pretium elementum. Vestibulum interdum egestas nulla, nec ornare dolor posuere quis. Sed sollicitudin quam nec massa blandit dictum. Maecenas sit amet libero nisl.\n\nCurabitur vehicula diam nunc, eu consequat dolor egestas id. Donec fermentum venenatis ante et tincidunt. Cras maximus neque quis orci tempor, eget tristique magna scelerisque. Vivamus scelerisque erat vel nibh ultrices, a mattis libero tincidunt. Nam pulvinar arcu vel maximus euismod. Duis sed sollicitudin massa, sit amet feugiat ipsum. Aenean eget ultricies leo. Donec purus lorem, posuere eget congue eu, blandit quis elit. Quisque et dolor non eros viverra tincidunt quis et tellus.",
+      "price": 999,
+      "discountPercentage": 10,
+      "rating": 5,
+      "stock": 50,
+      "category": "smartphones",
+      "brand": "Samsung",
+      "thumbnail": "https://images.unsplash.com/photo-1663841092674-da58c50c866f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+      "quantity": 6,
+      "images": [
+        "https://images.unsplash.com/photo-1663841092674-da58c50c866f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+        "https://images.unsplash.com/photo-1663841092674-da58c50c866f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+        "https://images.unsplash.com/photo-1663841092674-da58c50c866f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+        "https://images.unsplash.com/photo-1663841092674-da58c50c866f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80"
+      ],
+      "id": 101
     }
   ],
   "brands": [

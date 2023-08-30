@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
+  createProduct,
   fetchAllBrands,
   fetchAllCategories,
   fetchAllProducts,
@@ -52,6 +53,14 @@ export const getAllCategoriesAsync = createAsyncThunk(
   "product/fetchAllCategories",
   async () => {
     const response = await fetchAllCategories();
+    return response;
+  }
+);
+
+export const createProductAsync = createAsyncThunk(
+  "product/createProduct",
+  async (product) => {
+    const response = await createProduct(product);
     return response;
   }
 );
@@ -121,6 +130,16 @@ export const productSlice = createSlice({
         state.selectedProduct = action.payload;
       })
       .addCase(getProductByIdAsync.rejected, (state) => {
+        state.status = "failed";
+      })
+      .addCase(createProductAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(createProductAsync.fulfilled, (state, action) => {
+        state.status = "idle";
+        state.products.push(action.payload);
+      })
+      .addCase(createProductAsync.rejected, (state) => {
         state.status = "failed";
       });
   },
