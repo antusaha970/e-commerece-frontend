@@ -89,3 +89,17 @@ export async function createProduct(product) {
     return error.message;
   }
 }
+
+// For updating a single product
+export async function updateProduct(product) {
+  try {
+    const response = await axios.patch(
+      `http://localhost:8080/products/${product.id}`,
+      product
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return error.message;
+  }
+}

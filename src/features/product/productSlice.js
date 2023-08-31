@@ -6,6 +6,7 @@ import {
   fetchAllProducts,
   fetchFilterProducts,
   fetchProductById,
+  updateProduct,
 } from "./productAPI";
 
 const initialState = {
@@ -61,6 +62,14 @@ export const createProductAsync = createAsyncThunk(
   "product/createProduct",
   async (product) => {
     const response = await createProduct(product);
+    return response;
+  }
+);
+
+export const updateProductAsync = createAsyncThunk(
+  "product/updateProduct",
+  async (product) => {
+    const response = await updateProduct(product);
     return response;
   }
 );
@@ -140,6 +149,19 @@ export const productSlice = createSlice({
         state.products.push(action.payload);
       })
       .addCase(createProductAsync.rejected, (state) => {
+        state.status = "failed";
+      })
+      .addCase(updateProductAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(updateProductAsync.fulfilled, (state, action) => {
+        state.status = "idle";
+        const index = state.products.findIndex(
+          (product) => product.id === action.payload.id
+        );
+        state.products[index] = action.payload;
+      })
+      .addCase(updateProductAsync.rejected, (state) => {
         state.status = "failed";
       });
   },

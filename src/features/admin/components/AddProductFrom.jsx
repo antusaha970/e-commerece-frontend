@@ -2,20 +2,53 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createProductAsync,
+  getProductByIdAsync,
   selectAllBrands,
   selectAllCategories,
+  selectProductById,
+  updateProductAsync,
 } from "../../product/productSlice";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 const AddProductFrom = () => {
   const {
     register,
     reset,
     handleSubmit,
+    setValue,
     // formState: { errors },
   } = useForm();
   const brands = useSelector(selectAllBrands);
   const categories = useSelector(selectAllCategories);
   const dispatch = useDispatch();
+  const selectedProduct = useSelector(selectProductById);
+  const params = useParams();
+
+  useEffect(() => {
+    if (params.id) {
+      dispatch(getProductByIdAsync(params.id));
+    }
+  }, [params.id, dispatch]);
+
+  useEffect(() => {
+    if (selectedProduct && params.id) {
+      setValue("title", selectedProduct.title);
+      setValue("description", selectedProduct.description);
+      setValue("price", selectedProduct.price);
+      setValue("discountPercentage", selectedProduct.discountPercentage);
+      setValue("rating", selectedProduct.rating);
+      setValue("stock", selectedProduct.stock);
+      setValue("quantity", selectedProduct.quantity);
+      setValue("brand", selectedProduct.brand);
+      setValue("category", selectedProduct.category);
+      setValue("thumbnail", selectedProduct.thumbnail);
+      setValue("image1", selectedProduct.images[0]);
+      setValue("image2", selectedProduct.images[1]);
+      setValue("image3", selectedProduct.images[2]);
+      setValue("image4", selectedProduct.images[3]);
+    }
+  }, [params.id, selectedProduct, setValue]);
 
   const onSubmit = (data) => {
     const product = {
@@ -31,8 +64,22 @@ const AddProductFrom = () => {
       quantity: +data.quantity,
       images: [data.image1, data.image2, data.image3, data.image4],
     };
-    dispatch(createProductAsync(product));
+    if (params.id) {
+      product.id = params.id;
+      dispatch(updateProductAsync(product));
+    } else {
+      dispatch(createProductAsync(product));
+    }
     reset();
+  };
+
+  const handleDelete = () => {
+    if (selectedProduct) {
+      const product = { ...selectedProduct };
+      product["deleted"] = true;
+      dispatch(updateProductAsync(product));
+      reset();
+    }
   };
 
   return (
@@ -498,6 +545,13 @@ const AddProductFrom = () => {
             className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Add Product
+          </button>
+          <button
+            onClick={handleDelete}
+            type="button"
+            className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+          >
+            Delete Product
           </button>
         </div>
       </form>

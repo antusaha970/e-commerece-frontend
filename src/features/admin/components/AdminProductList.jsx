@@ -439,6 +439,11 @@ function ProductGrid({ products }) {
                             />
                             {product.title}
                           </p>
+                          {product?.deleted && (
+                            <p className="text-sm line-through font-medium text-red-400">
+                              Deleted Product
+                            </p>
+                          )}
                         </h3>
                         <p className="mt-1 text-sm text-gray-500 flex items-center">
                           <StarIcon className="w-4 h-4" /> {product.rating}
@@ -459,7 +464,7 @@ function ProductGrid({ products }) {
                     </div>
                   </Link>
                 </div>
-                <Link>
+                <Link to={`/admin/add-product-form/${product.id}`}>
                   <button className="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 mt-5">
                     Edit Product
                   </button>
