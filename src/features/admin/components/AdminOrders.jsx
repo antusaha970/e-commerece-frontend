@@ -3,15 +3,18 @@ import { ITEMS_PER_PAGE } from "../../../app/constants";
 import {
   fetchAllOrdersAsync,
   selectOrders,
+  selectTotalOrders,
   updateOrderAsync,
 } from "../../order/orderSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { discountedPrice } from "../../../app/utils";
+import Pagination from "../../common/pagination/Pagination";
 
 const AdminOrders = () => {
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
   const orders = useSelector(selectOrders);
+  const totalOrders = useSelector(selectTotalOrders);
   const [editAble, setEditAble] = useState(-1);
   useEffect(() => {
     const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
@@ -33,6 +36,10 @@ const AdminOrders = () => {
     const updatedOrder = { ...order };
     updatedOrder.status = "cancelled";
     dispatch(updateOrderAsync(updatedOrder));
+  };
+  // This function handle pagination of products
+  const handlePagination = (currentPage) => {
+    setPage(currentPage);
   };
 
   return (
@@ -190,6 +197,11 @@ const AdminOrders = () => {
                 </tbody>
               </table>
             </div>
+            <Pagination
+              page={page}
+              totalItems={totalOrders}
+              handlePagination={handlePagination}
+            />
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ const initialState = {
   orders: [],
   status: "idle",
   currentOrder: null,
-  totalItems: 0,
+  totalOrders: 0,
 };
 
 export const createOrderAsync = createAsyncThunk(
@@ -59,7 +59,7 @@ export const orderSlice = createSlice({
       .addCase(fetchAllOrdersAsync.fulfilled, (state, action) => {
         state.status = "idle";
         state.orders = action.payload.orders;
-        state.totalItems = action.payload.totalItems;
+        state.totalOrders = action.payload.totalItems;
       })
       .addCase(fetchAllOrdersAsync.rejected, (state) => {
         state.status = "failed";
@@ -85,5 +85,6 @@ export const { resetCurrentOrder } = orderSlice.actions;
 // select orders
 export const selectOrders = (state) => state.order.orders;
 export const selectCurrentOrder = (state) => state.order.currentOrder;
+export const selectTotalOrders = (state) => state.order.totalOrders;
 
 export default orderSlice.reducer;

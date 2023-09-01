@@ -2555,7 +2555,28 @@
       "id": 5
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "id": 2,
+      "title": "iPhone X",
+      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+      "price": 899,
+      "discountPercentage": 17.94,
+      "rating": 4.44,
+      "stock": 34,
+      "brand": "Apple",
+      "category": "smartphones",
+      "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/2/1.jpg",
+        "https://i.dummyjson.com/data/products/2/2.jpg",
+        "https://i.dummyjson.com/data/products/2/3.jpg",
+        "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+      ],
+      "quantity": 1,
+      "user": 1
+    }
+  ],
   "orders": [
     {
       "cartItems": [
@@ -3345,6 +3366,302 @@
       },
       "status": "pending",
       "id": 12
+    },
+    {
+      "cartItems": [
+        {
+          "id": 93,
+          "title": "Automatic Motor Gas Motorcycles",
+          "description": "150cc 4-Stroke Motorcycle Automatic Motor Gas Motorcycles Scooter motorcycles 150cc scooter",
+          "price": 1050,
+          "discountPercentage": 3.34,
+          "rating": 4.84,
+          "stock": 127,
+          "brand": "shock absorber",
+          "category": "motorcycle",
+          "thumbnail": "https://i.dummyjson.com/data/products/93/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/93/1.jpg",
+            "https://i.dummyjson.com/data/products/93/2.jpg",
+            "https://i.dummyjson.com/data/products/93/3.jpg",
+            "https://i.dummyjson.com/data/products/93/4.jpg",
+            "https://i.dummyjson.com/data/products/93/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1
+        },
+        {
+          "id": 24,
+          "title": "cereals muesli fruit nuts",
+          "description": "original fauji cereal muesli 250gm box pack original fauji cereals muesli fruit nuts flakes breakfast cereal break fast faujicereals cerels cerel foji fouji",
+          "price": 46,
+          "discountPercentage": 16.8,
+          "rating": 4.94,
+          "stock": 113,
+          "brand": "fauji",
+          "category": "groceries",
+          "thumbnail": "https://i.dummyjson.com/data/products/24/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/24/1.jpg",
+            "https://i.dummyjson.com/data/products/24/2.jpg",
+            "https://i.dummyjson.com/data/products/24/3.jpg",
+            "https://i.dummyjson.com/data/products/24/4.jpg",
+            "https://i.dummyjson.com/data/products/24/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1
+        }
+      ],
+      "totalItems": 2,
+      "subTotal": 1053,
+      "user": {
+        "email": "antusaha970@gmail.com",
+        "password": "antu1",
+        "confirmPassword": "antu1",
+        "addresses": [
+          {
+            "fullName": "raju ",
+            "email": "raju.2@gmail.com",
+            "phoneNumber": "01748656711",
+            "country": "Mexico",
+            "streetAddress": "shodevpur",
+            "city": "Cumilla",
+            "region": "cumilla ",
+            "pinCode": "1111"
+          },
+          {
+            "fullName": "antu saha",
+            "email": "antusaha990@gmail.com",
+            "phoneNumber": "01748656722",
+            "country": "United States",
+            "streetAddress": "shodevpur",
+            "city": "akldjfadlj",
+            "region": "feni",
+            "pinCode": "1111"
+          },
+          {
+            "fullName": "Jack Speraoo ",
+            "email": "antu.digi.10@gmail.com",
+            "phoneNumber": "01748656722",
+            "country": "Mexico",
+            "streetAddress": "feni",
+            "city": "akldjfadlj",
+            "region": "feni",
+            "pinCode": "0025"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "fullName": "Jack Speraoo ",
+        "email": "antu.digi.10@gmail.com",
+        "phoneNumber": "01748656722",
+        "country": "Mexico",
+        "streetAddress": "feni",
+        "city": "akldjfadlj",
+        "region": "feni",
+        "pinCode": "0025"
+      },
+      "status": "pending",
+      "id": 13
+    },
+    {
+      "cartItems": [
+        {
+          "id": 89,
+          "title": "Qualcomm original Car Charger",
+          "description": "best Quality CHarger , Highly Recommended to all best Quality CHarger , Highly Recommended to all",
+          "price": 40,
+          "discountPercentage": 17.53,
+          "rating": 4.2,
+          "stock": 79,
+          "brand": "TC Reusable",
+          "category": "automotive",
+          "thumbnail": "https://i.dummyjson.com/data/products/89/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/89/1.jpg",
+            "https://i.dummyjson.com/data/products/89/2.jpg",
+            "https://i.dummyjson.com/data/products/89/3.jpg",
+            "https://i.dummyjson.com/data/products/89/4.jpg",
+            "https://i.dummyjson.com/data/products/89/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1
+        },
+        {
+          "id": 83,
+          "title": "Wiley X Night Vision Yellow Glasses",
+          "description": "Wiley X Night Vision Yellow Glasses for Riders - Night Vision Anti Fog Driving Glasses - Free Night Glass Cover - Shield Eyes From Dust and Virus- For Night Sport Matches",
+          "price": 30,
+          "discountPercentage": 6.33,
+          "rating": 4.97,
+          "stock": 115,
+          "brand": "mastar watch",
+          "category": "sunglasses",
+          "thumbnail": "https://i.dummyjson.com/data/products/83/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/83/1.jpg",
+            "https://i.dummyjson.com/data/products/83/2.jpg",
+            "https://i.dummyjson.com/data/products/83/3.jpg",
+            "https://i.dummyjson.com/data/products/83/4.jpg",
+            "https://i.dummyjson.com/data/products/83/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1
+        },
+        {
+          "id": 64,
+          "title": "Leather Strap Skeleton Watch",
+          "description": "Leather Strap Skeleton Watch for Men - Stylish and Latest Design",
+          "price": 46,
+          "discountPercentage": 10.2,
+          "rating": 4.98,
+          "stock": 61,
+          "brand": "Strap Skeleton",
+          "category": "mens-watches",
+          "thumbnail": "https://i.dummyjson.com/data/products/64/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/64/1.jpg",
+            "https://i.dummyjson.com/data/products/64/2.webp",
+            "https://i.dummyjson.com/data/products/64/3.jpg",
+            "https://i.dummyjson.com/data/products/64/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1
+        }
+      ],
+      "totalItems": 3,
+      "subTotal": 102,
+      "user": {
+        "email": "antusaha970@gmail.com",
+        "password": "antu1",
+        "confirmPassword": "antu1",
+        "addresses": [
+          {
+            "fullName": "raju ",
+            "email": "raju.2@gmail.com",
+            "phoneNumber": "01748656711",
+            "country": "Mexico",
+            "streetAddress": "shodevpur",
+            "city": "Cumilla",
+            "region": "cumilla ",
+            "pinCode": "1111"
+          },
+          {
+            "fullName": "antu saha",
+            "email": "antusaha990@gmail.com",
+            "phoneNumber": "01748656722",
+            "country": "United States",
+            "streetAddress": "shodevpur",
+            "city": "akldjfadlj",
+            "region": "feni",
+            "pinCode": "1111"
+          },
+          {
+            "fullName": "Jack Speraoo ",
+            "email": "antu.digi.10@gmail.com",
+            "phoneNumber": "01748656722",
+            "country": "Mexico",
+            "streetAddress": "feni",
+            "city": "akldjfadlj",
+            "region": "feni",
+            "pinCode": "0025"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "fullName": "raju ",
+        "email": "raju.2@gmail.com",
+        "phoneNumber": "01748656711",
+        "country": "Mexico",
+        "streetAddress": "shodevpur",
+        "city": "Cumilla",
+        "region": "cumilla ",
+        "pinCode": "1111"
+      },
+      "status": "pending",
+      "id": 14
+    },
+    {
+      "cartItems": [
+        {
+          "id": 13,
+          "title": "Fog Scent Xpressio Perfume",
+          "description": "Product details of Best Fog Scent Xpressio Perfume 100ml For Men cool long lasting perfumes for Men",
+          "price": 13,
+          "discountPercentage": 8.14,
+          "rating": 4.59,
+          "stock": 61,
+          "brand": "Fog Scent Xpressio",
+          "category": "fragrances",
+          "thumbnail": "https://i.dummyjson.com/data/products/13/thumbnail.webp",
+          "images": [
+            "https://i.dummyjson.com/data/products/13/1.jpg",
+            "https://i.dummyjson.com/data/products/13/2.png",
+            "https://i.dummyjson.com/data/products/13/3.jpg",
+            "https://i.dummyjson.com/data/products/13/4.jpg",
+            "https://i.dummyjson.com/data/products/13/thumbnail.webp"
+          ],
+          "quantity": 2,
+          "user": 1
+        }
+      ],
+      "totalItems": 2,
+      "subTotal": 24,
+      "user": {
+        "email": "antusaha970@gmail.com",
+        "password": "antu1",
+        "confirmPassword": "antu1",
+        "addresses": [
+          {
+            "fullName": "raju ",
+            "email": "raju.2@gmail.com",
+            "phoneNumber": "01748656711",
+            "country": "Mexico",
+            "streetAddress": "shodevpur",
+            "city": "Cumilla",
+            "region": "cumilla ",
+            "pinCode": "1111"
+          },
+          {
+            "fullName": "antu saha",
+            "email": "antusaha990@gmail.com",
+            "phoneNumber": "01748656722",
+            "country": "United States",
+            "streetAddress": "shodevpur",
+            "city": "akldjfadlj",
+            "region": "feni",
+            "pinCode": "1111"
+          },
+          {
+            "fullName": "Jack Speraoo ",
+            "email": "antu.digi.10@gmail.com",
+            "phoneNumber": "01748656722",
+            "country": "Mexico",
+            "streetAddress": "feni",
+            "city": "akldjfadlj",
+            "region": "feni",
+            "pinCode": "0025"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "fullName": "antu saha",
+        "email": "antusaha990@gmail.com",
+        "phoneNumber": "01748656722",
+        "country": "United States",
+        "streetAddress": "shodevpur",
+        "city": "akldjfadlj",
+        "region": "feni",
+        "pinCode": "1111"
+      },
+      "status": "pending",
+      "id": 15
     }
   ]
 }
