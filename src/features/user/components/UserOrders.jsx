@@ -6,6 +6,7 @@ import {
   selectLoggedInUserOrders,
 } from "../userSlice";
 import { Link } from "react-router-dom";
+import { discountedPrice } from "../../../app/utils";
 
 const UserOrders = () => {
   const user = useSelector(selectLoggedInUserInfo);
@@ -49,7 +50,13 @@ const UserOrders = () => {
                               {product.title}
                             </Link>
                           </h3>
-                          <p className="ml-4">${product.price}</p>
+                          <p className="ml-4">
+                            $
+                            {discountedPrice(
+                              product.price,
+                              product.discountPercentage
+                            )}
+                          </p>
                         </div>
                         <p className="mt-1 text-sm text-gray-500">
                           {product.brand}

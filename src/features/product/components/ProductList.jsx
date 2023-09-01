@@ -22,6 +22,7 @@ import {
   selectTotalItems,
 } from "../productSlice";
 import { ITEMS_PER_PAGE } from "../../../app/constants";
+import { discountedPrice } from "../../../app/utils";
 
 const sortOptions = [
   {
@@ -444,10 +445,10 @@ function ProductGrid({ products }) {
                     <div>
                       <p className="text-sm font-medium text-gray-900">
                         $
-                        {(
-                          product.price *
-                          (1 - product.discountPercentage / 100)
-                        ).toFixed(2)}
+                        {discountedPrice(
+                          product.price,
+                          product.discountPercentage
+                        )}
                       </p>
                       <p className="text-sm line-through font-medium text-gray-400">
                         ${product.price.toFixed(2)}

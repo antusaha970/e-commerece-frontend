@@ -15,6 +15,7 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { updateUserAsync } from "../features/user/userSlice";
+import { discountedPrice } from "../app/utils";
 const CheckOutPage = () => {
   const {
     register,
@@ -54,7 +55,9 @@ const CheckOutPage = () => {
 
   // cart dependencies
   const subTotal = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc, item) =>
+      acc +
+      discountedPrice(item.price, item.discountPercentage) * item.quantity,
     0
   );
   const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);

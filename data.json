@@ -2555,28 +2555,7 @@
       "id": 5
     }
   ],
-  "cart": [
-    {
-      "id": 7,
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": 1499,
-      "discountPercentage": 4.15,
-      "rating": 4.25,
-      "stock": 50,
-      "brand": "Samsung",
-      "category": "laptops",
-      "thumbnail": "https://i.dummyjson.com/data/products/7/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/7/1.jpg",
-        "https://i.dummyjson.com/data/products/7/2.jpg",
-        "https://i.dummyjson.com/data/products/7/3.jpg",
-        "https://i.dummyjson.com/data/products/7/thumbnail.jpg"
-      ],
-      "quantity": 1,
-      "user": 1
-    }
-  ],
+  "cart": [],
   "orders": [
     {
       "cartItems": [
@@ -2632,7 +2611,7 @@
         "region": "feni",
         "pinCode": "6666"
       },
-      "status": "pending",
+      "status": "cancelled",
       "id": 1
     },
     {
@@ -2689,7 +2668,7 @@
         "region": "feni",
         "pinCode": "6666"
       },
-      "status": "pending",
+      "status": "delivered",
       "id": 2
     },
     {
@@ -2804,7 +2783,7 @@
         "region": "feni",
         "pinCode": "6666"
       },
-      "status": "pending",
+      "status": "dispatched",
       "id": 4
     },
     {
@@ -2941,7 +2920,7 @@
         "region": "feni",
         "pinCode": "6666"
       },
-      "status": "pending",
+      "status": "cancelled",
       "id": 6
     },
     {
@@ -3211,6 +3190,161 @@
       },
       "status": "pending",
       "id": 10
+    },
+    {
+      "cartItems": [
+        {
+          "id": 7,
+          "title": "Samsung Galaxy Book",
+          "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+          "price": 1499,
+          "discountPercentage": 4.15,
+          "rating": 4.25,
+          "stock": 50,
+          "brand": "Samsung",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/7/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/7/1.jpg",
+            "https://i.dummyjson.com/data/products/7/2.jpg",
+            "https://i.dummyjson.com/data/products/7/3.jpg",
+            "https://i.dummyjson.com/data/products/7/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1
+        }
+      ],
+      "totalItems": 1,
+      "subTotal": 1499,
+      "user": {
+        "email": "antusaha970@gmail.com",
+        "password": "antu1",
+        "confirmPassword": "antu1",
+        "addresses": [
+          {
+            "fullName": "raju ",
+            "email": "raju.2@gmail.com",
+            "phoneNumber": "01748656711",
+            "country": "Mexico",
+            "streetAddress": "shodevpur",
+            "city": "Cumilla",
+            "region": "cumilla ",
+            "pinCode": "1111"
+          },
+          {
+            "fullName": "antu saha",
+            "email": "antusaha990@gmail.com",
+            "phoneNumber": "01748656722",
+            "country": "United States",
+            "streetAddress": "shodevpur",
+            "city": "akldjfadlj",
+            "region": "feni",
+            "pinCode": "1111"
+          },
+          {
+            "fullName": "Jack Speraoo ",
+            "email": "antu.digi.10@gmail.com",
+            "phoneNumber": "01748656722",
+            "country": "Mexico",
+            "streetAddress": "feni",
+            "city": "akldjfadlj",
+            "region": "feni",
+            "pinCode": "0025"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "fullName": "raju ",
+        "email": "raju.2@gmail.com",
+        "phoneNumber": "01748656711",
+        "country": "Mexico",
+        "streetAddress": "shodevpur",
+        "city": "Cumilla",
+        "region": "cumilla ",
+        "pinCode": "1111"
+      },
+      "status": "pending",
+      "id": 11
+    },
+    {
+      "cartItems": [
+        {
+          "id": 4,
+          "title": "OPPOF19",
+          "description": "OPPO F19 is officially announced on April 2021.",
+          "price": 280,
+          "discountPercentage": 17.91,
+          "rating": 4.3,
+          "stock": 123,
+          "brand": "OPPO",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/4/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/4/1.jpg",
+            "https://i.dummyjson.com/data/products/4/2.jpg",
+            "https://i.dummyjson.com/data/products/4/3.jpg",
+            "https://i.dummyjson.com/data/products/4/4.jpg",
+            "https://i.dummyjson.com/data/products/4/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1
+        }
+      ],
+      "totalItems": 1,
+      "subTotal": 230,
+      "user": {
+        "email": "antusaha970@gmail.com",
+        "password": "antu1",
+        "confirmPassword": "antu1",
+        "addresses": [
+          {
+            "fullName": "raju ",
+            "email": "raju.2@gmail.com",
+            "phoneNumber": "01748656711",
+            "country": "Mexico",
+            "streetAddress": "shodevpur",
+            "city": "Cumilla",
+            "region": "cumilla ",
+            "pinCode": "1111"
+          },
+          {
+            "fullName": "antu saha",
+            "email": "antusaha990@gmail.com",
+            "phoneNumber": "01748656722",
+            "country": "United States",
+            "streetAddress": "shodevpur",
+            "city": "akldjfadlj",
+            "region": "feni",
+            "pinCode": "1111"
+          },
+          {
+            "fullName": "Jack Speraoo ",
+            "email": "antu.digi.10@gmail.com",
+            "phoneNumber": "01748656722",
+            "country": "Mexico",
+            "streetAddress": "feni",
+            "city": "akldjfadlj",
+            "region": "feni",
+            "pinCode": "0025"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "fullName": "Jack Speraoo ",
+        "email": "antu.digi.10@gmail.com",
+        "phoneNumber": "01748656722",
+        "country": "Mexico",
+        "streetAddress": "feni",
+        "city": "akldjfadlj",
+        "region": "feni",
+        "pinCode": "0025"
+      },
+      "status": "pending",
+      "id": 12
     }
   ]
 }

@@ -71,6 +71,13 @@ const UserProfile = () => {
               </button>
             </Link>
           )}
+          {user.role === "admin" && (
+            <Link to={"/admin/view-orders"}>
+              <button className="rounded-md ml-4 bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 mt-5">
+                View Orders
+              </button>
+            </Link>
+          )}
         </div>
 
         <div className="border-t border-gray-200 px-4 py-6 sm:px-6">

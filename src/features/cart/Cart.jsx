@@ -5,11 +5,14 @@ import {
   updateCartAsync,
 } from "./cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { discountedPrice } from "../../app/utils";
 
 const Cart = () => {
   const cartItems = useSelector(selectCartItems);
   const subTotal = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc, item) =>
+      acc +
+      discountedPrice(item.price, item.discountPercentage) * item.quantity,
     0
   );
   const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
@@ -44,7 +47,13 @@ const Cart = () => {
                           {product.title}
                         </Link>
                       </h3>
-                      <p className="ml-4">${product.price}</p>
+                      <p className="ml-4">
+                        $
+                        {discountedPrice(
+                          product.price,
+                          product.discountPercentage
+                        )}
+                      </p>
                     </div>
                     <p className="mt-1 text-sm text-gray-500">
                       {product.brand}
