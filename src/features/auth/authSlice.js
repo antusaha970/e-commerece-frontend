@@ -84,5 +84,6 @@ export const authSlice = createSlice({
 // Selectors
 export const selectLoggedInUser = (state) => state.auth.loggedInUser;
 export const selectLoginError = (state) => state.auth.error;
+export const selectLoginStatus = (state) => state.auth.status;
 
 export default authSlice.reducer;

@@ -111,26 +111,16 @@ export const productSlice = createSlice({
       .addCase(getFilterProductsAsync.rejected, (state) => {
         state.status = "failed";
       })
-      .addCase(getAllBrandsAsync.pending, (state) => {
-        state.status = "loading";
-      })
+      .addCase(getAllBrandsAsync.pending, () => {})
       .addCase(getAllBrandsAsync.fulfilled, (state, action) => {
-        state.status = "idle";
         state.brands = action.payload;
       })
-      .addCase(getAllBrandsAsync.rejected, (state) => {
-        state.status = "failed";
-      })
-      .addCase(getAllCategoriesAsync.pending, (state) => {
-        state.status = "loading";
-      })
+      .addCase(getAllBrandsAsync.rejected, () => {})
+      .addCase(getAllCategoriesAsync.pending, () => {})
       .addCase(getAllCategoriesAsync.fulfilled, (state, action) => {
-        state.status = "idle";
         state.categories = action.payload;
       })
-      .addCase(getAllCategoriesAsync.rejected, (state) => {
-        state.status = "failed";
-      })
+      .addCase(getAllCategoriesAsync.rejected, () => {})
       .addCase(getProductByIdAsync.pending, (state) => {
         state.status = "loading";
       })
@@ -175,5 +165,6 @@ export const selectTotalItems = (state) => state.product.totalItems;
 export const selectAllBrands = (state) => state.product.brands;
 export const selectAllCategories = (state) => state.product.categories;
 export const selectProductById = (state) => state.product.selectedProduct;
+export const selectProductStatus = (state) => state.product.status;
 
 export default productSlice.reducer;

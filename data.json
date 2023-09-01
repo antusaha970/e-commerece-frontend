@@ -39,22 +39,6 @@
       "quantity": 1
     },
     {
-      "id": 3,
-      "title": "Samsung Universe 9",
-      "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
-      "price": 1249,
-      "discountPercentage": 15.46,
-      "rating": 4.09,
-      "stock": 36,
-      "brand": "Samsung",
-      "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/3/1.jpg"
-      ],
-      "quantity": 1
-    },
-    {
       "id": 4,
       "title": "OPPOF19",
       "description": "OPPO F19 is officially announced on April 2021.",
@@ -2463,7 +2447,7 @@
           "fullName": "raju ",
           "email": "raju.2@gmail.com",
           "phoneNumber": "01748656711",
-          "country": "Mexico",
+          "country": "United States",
           "streetAddress": "shodevpur",
           "city": "Cumilla",
           "region": "cumilla ",
@@ -2553,27 +2537,102 @@
       "addresses": [],
       "role": "admin",
       "id": 5
+    },
+    {
+      "email": "jk@gmail.com",
+      "password": "antu1",
+      "confirmPassword": "antu1",
+      "addresses": [],
+      "role": "user",
+      "id": 6
     }
   ],
   "cart": [
     {
-      "id": 2,
-      "title": "iPhone X",
-      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-      "price": 899,
-      "discountPercentage": 17.94,
-      "rating": 4.44,
-      "stock": 34,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+      "id": 8,
+      "title": "Microsoft Surface Laptop 4",
+      "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
+      "price": 1499,
+      "discountPercentage": 10.23,
+      "rating": 4.43,
+      "stock": 68,
+      "brand": "Microsoft Surface",
+      "category": "laptops",
+      "thumbnail": "https://i.dummyjson.com/data/products/8/thumbnail.jpg",
       "images": [
-        "https://i.dummyjson.com/data/products/2/1.jpg",
-        "https://i.dummyjson.com/data/products/2/2.jpg",
-        "https://i.dummyjson.com/data/products/2/3.jpg",
-        "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+        "https://i.dummyjson.com/data/products/8/1.jpg",
+        "https://i.dummyjson.com/data/products/8/2.jpg",
+        "https://i.dummyjson.com/data/products/8/3.jpg",
+        "https://i.dummyjson.com/data/products/8/4.jpg",
+        "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
+      ],
+      "quantity": 2,
+      "productId": 8,
+      "user": 1
+    },
+    {
+      "id": 38,
+      "title": "sublimation plain kids tank",
+      "description": "sublimation plain kids tank tops wholesale",
+      "price": 100,
+      "discountPercentage": 11.12,
+      "rating": 4.8,
+      "stock": 20,
+      "brand": "Soft Cotton",
+      "category": "tops",
+      "thumbnail": "https://i.dummyjson.com/data/products/38/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/38/1.png",
+        "https://i.dummyjson.com/data/products/38/2.jpg",
+        "https://i.dummyjson.com/data/products/38/3.jpg",
+        "https://i.dummyjson.com/data/products/38/4.jpg"
+      ],
+      "quantity": 2,
+      "productId": 38,
+      "user": 1
+    },
+    {
+      "id": 42,
+      "title": "Stiched Kurta plus trouser",
+      "description": "FABRIC: LILEIN CHEST: 21 LENGHT: 37 TROUSER: (38) :ARABIC LILEIN",
+      "price": 80,
+      "discountPercentage": 15.37,
+      "rating": 4.05,
+      "stock": 148,
+      "brand": "Digital Printed",
+      "category": "womens-dresses",
+      "thumbnail": "https://i.dummyjson.com/data/products/42/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/42/1.png",
+        "https://i.dummyjson.com/data/products/42/2.png",
+        "https://i.dummyjson.com/data/products/42/3.png",
+        "https://i.dummyjson.com/data/products/42/4.jpg",
+        "https://i.dummyjson.com/data/products/42/thumbnail.jpg"
+      ],
+      "quantity": 2,
+      "productId": 42,
+      "user": 1
+    },
+    {
+      "id": 4,
+      "title": "OPPOF19",
+      "description": "OPPO F19 is officially announced on April 2021.",
+      "price": 280,
+      "discountPercentage": 17.91,
+      "rating": 4.3,
+      "stock": 123,
+      "brand": "OPPO",
+      "category": "smartphones",
+      "thumbnail": "https://i.dummyjson.com/data/products/4/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/4/1.jpg",
+        "https://i.dummyjson.com/data/products/4/2.jpg",
+        "https://i.dummyjson.com/data/products/4/3.jpg",
+        "https://i.dummyjson.com/data/products/4/4.jpg",
+        "https://i.dummyjson.com/data/products/4/thumbnail.jpg"
       ],
       "quantity": 1,
+      "productId": 4,
       "user": 1
     }
   ],

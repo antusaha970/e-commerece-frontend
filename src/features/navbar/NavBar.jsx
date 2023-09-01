@@ -16,11 +16,8 @@ const user = {
     "https://t3.ftcdn.net/jpg/05/16/27/58/240_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg",
 };
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
-  { name: "Reports", href: "#", current: false },
+  { name: "Home", href: "/", current: true },
+  { name: "Profile", href: "/user-profile", current: false },
 ];
 const userNavigation = [
   { name: "My Profile", link: "/user-profile" },
@@ -47,8 +44,8 @@ const NavBar = ({ children }) => {
                     <div className="flex-shrink-0">
                       <Link to="/">
                         <img
-                          className="h-8 w-8"
-                          src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                          className="h-10 w-full"
+                          src="/logo.png"
                           alt="Your Company"
                         />
                       </Link>
@@ -56,9 +53,9 @@ const NavBar = ({ children }) => {
                     <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">
                         {navigation.map((item) => (
-                          <a
+                          <Link
                             key={item.name}
-                            href={item.href}
+                            to={item.href}
                             className={classNames(
                               item.current
                                 ? "bg-gray-900 text-white"
@@ -68,7 +65,7 @@ const NavBar = ({ children }) => {
                             aria-current={item.current ? "page" : undefined}
                           >
                             {item.name}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </div>

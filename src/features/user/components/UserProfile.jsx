@@ -3,6 +3,7 @@ import { selectLoggedInUserInfo, updateUserAsync } from "../userSlice";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const UserProfile = () => {
   const {
@@ -20,6 +21,16 @@ const UserProfile = () => {
     const newUser = { ...user, addresses: [...user.addresses] };
     newUser.addresses.splice(id, 1);
     dispatch(updateUserAsync(newUser));
+    toast.success("Removed a address", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
   const handleEditForm = (id, data) => {
     setShowAddAddressFrom(false);
@@ -39,6 +50,16 @@ const UserProfile = () => {
     dispatch(updateUserAsync(newUser));
     reset();
     setSelectedAddressInd(-1);
+    toast.success("Updated address", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
   const addAddress = (address) => {
@@ -47,6 +68,16 @@ const UserProfile = () => {
     reset();
     setShowAddAddressFrom(false);
     setSelectedAddressInd(-1);
+    toast.success("Added a new Address", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
   return (
@@ -57,11 +88,11 @@ const UserProfile = () => {
             User Name: {user?.name ? user.name : "New User"}
           </h2>
           <h5 className="text-2xl mb-4 text-gray-400">
-            User email: {user.email}
+            User email: {user?.email}
           </h5>
           {user.role === "admin" && (
             <h5 className="text-2xl mb-4 text-gray-400">
-              Your role: {user.role}
+              Your role: {user?.role}
             </h5>
           )}
           {user.role === "admin" && (

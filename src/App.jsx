@@ -23,6 +23,7 @@ import AdminHomePage from "./pages/AdminHomePage";
 import AdminProductDetailsPage from "./pages/AdminProductDetails";
 import AddProductFromPage from "./pages/AddProductFormPage";
 import AdminOrdersPage from "./pages/AdminOrdersPage";
+import { ToastContainer } from "react-toastify";
 
 const router = createBrowserRouter([
   {
@@ -154,6 +155,7 @@ function App() {
   }, [user, dispatch]);
   return (
     <>
+      <ToastContainer />
       <RouterProvider router={router} />
     </>
   );

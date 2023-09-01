@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   deleteItemFromCartAsync,
   selectCartItems,
+  selectCartStatus,
   updateCartAsync,
 } from "../features/cart/cartSlice";
 import { useEffect, useState } from "react";
@@ -16,6 +17,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { updateUserAsync } from "../features/user/userSlice";
 import { discountedPrice } from "../app/utils";
+import Loader from "../features/common/Loader/Loader";
 const CheckOutPage = () => {
   const {
     register,
@@ -26,6 +28,7 @@ const CheckOutPage = () => {
   const user = useSelector(selectLoggedInUser);
   const cartItems = useSelector(selectCartItems);
   const currentOrder = useSelector(selectCurrentOrder);
+  const status = useSelector(selectCartStatus);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("cash");
   const navigate = useNavigate();
@@ -101,7 +104,6 @@ const CheckOutPage = () => {
 
   return (
     <>
-      <ToastContainer />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
           <div className="lg:col-span-3">
@@ -441,97 +443,110 @@ const CheckOutPage = () => {
           {/* Cart html */}
           <div className="lg:col-span-2">
             <div className="mx-auto bg-white rounded-sm shadow-sm max-w-7xl px-2 sm:px-62lg:px-2">
-              <div className="mt-8 border-t border-gray-200 px-4 py-6 sm:px-6">
-                <h2 className="font-bold text-5xl mb-4">Cart</h2>
-                <div className="flow-root">
-                  <ul role="list" className="-my-6 divide-y divide-gray-200">
-                    {cartItems.map((product) => (
-                      <li key={product.id} className="flex py-6">
-                        <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                          <img
-                            src={product.thumbnail}
-                            alt={product.title}
-                            className="h-full w-full object-cover object-center"
-                          />
-                        </div>
-
-                        <div className="ml-4 flex flex-1 flex-col">
-                          <div>
-                            <div className="flex justify-between text-base font-medium text-gray-900">
-                              <h3>
-                                <Link to={`/product-details/${product.id}`}>
-                                  {product.title}
-                                </Link>
-                              </h3>
-                              <p className="ml-4">${product.price}</p>
-                            </div>
-                            <p className="mt-1 text-sm text-gray-500">
-                              {product.brand}
-                            </p>
-                          </div>
-                          <div className="flex flex-1 items-end justify-between text-sm">
-                            <div className="flex items-center gap-3">
-                              <p className="text-gray-500">Qty </p>
-                              <select
-                                onChange={(e) => handleUpdateQty(e, product)}
-                                value={product.quantity}
-                              >
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                              </select>
-                            </div>
-                            <div className="flex">
-                              <button
-                                type="button"
-                                className="font-medium text-indigo-600 hover:text-indigo-500"
-                                onClick={() => handleDeleteItem(product)}
-                              >
-                                Remove
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-                <div className="flex justify-between my-4 border-b-2 border-gray-200 pb-3  text-base font-medium text-gray-900">
-                  <p>Subtotal</p>
-                  <p>${subTotal}</p>
-                </div>
-                <div className="flex justify-between my-4 text-base font-medium text-gray-900">
-                  <p>Total Items</p>
-                  <p>{totalItems}</p>
-                </div>
-                <p className="mt-0.5 text-sm text-gray-500">
-                  Shipping and taxes calculated at checkout.
-                </p>
-                <div className="mt-6">
-                  <p
-                    onClick={handleOrder}
-                    className="flex cursor-pointer items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                  >
-                    Order Now
-                  </p>
-                </div>
-                <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-                  <p>
-                    or
-                    <Link to="/">
-                      <button
-                        type="button"
-                        className="font-medium text-indigo-600 hover:text-indigo-500"
+              {status === "idle" ? (
+                <>
+                  <div className="mt-8 border-t border-gray-200 px-4 py-6 sm:px-6">
+                    <h2 className="font-bold text-5xl mb-4">Cart</h2>
+                    <div className="flow-root">
+                      <ul
+                        role="list"
+                        className="-my-6 divide-y divide-gray-200"
                       >
-                        Continue Shopping
-                        <span aria-hidden="true"> &rarr;</span>
-                      </button>
-                    </Link>
-                  </p>
+                        {cartItems.map((product) => (
+                          <li key={product.id} className="flex py-6">
+                            <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                              <img
+                                src={product.thumbnail}
+                                alt={product.title}
+                                className="h-full w-full object-cover object-center"
+                              />
+                            </div>
+
+                            <div className="ml-4 flex flex-1 flex-col">
+                              <div>
+                                <div className="flex justify-between text-base font-medium text-gray-900">
+                                  <h3>
+                                    <Link to={`/product-details/${product.id}`}>
+                                      {product.title}
+                                    </Link>
+                                  </h3>
+                                  <p className="ml-4">${product.price}</p>
+                                </div>
+                                <p className="mt-1 text-sm text-gray-500">
+                                  {product.brand}
+                                </p>
+                              </div>
+                              <div className="flex flex-1 items-end justify-between text-sm">
+                                <div className="flex items-center gap-3">
+                                  <p className="text-gray-500">Qty </p>
+                                  <select
+                                    onChange={(e) =>
+                                      handleUpdateQty(e, product)
+                                    }
+                                    value={product.quantity}
+                                  >
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                  </select>
+                                </div>
+                                <div className="flex">
+                                  <button
+                                    type="button"
+                                    className="font-medium text-indigo-600 hover:text-indigo-500"
+                                    onClick={() => handleDeleteItem(product)}
+                                  >
+                                    Remove
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+                    <div className="flex justify-between my-4 border-b-2 border-gray-200 pb-3  text-base font-medium text-gray-900">
+                      <p>Subtotal</p>
+                      <p>${subTotal}</p>
+                    </div>
+                    <div className="flex justify-between my-4 text-base font-medium text-gray-900">
+                      <p>Total Items</p>
+                      <p>{totalItems}</p>
+                    </div>
+                    <p className="mt-0.5 text-sm text-gray-500">
+                      Shipping and taxes calculated at checkout.
+                    </p>
+                    <div className="mt-6">
+                      <p
+                        onClick={handleOrder}
+                        className="flex cursor-pointer items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                      >
+                        Order Now
+                      </p>
+                    </div>
+                    <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+                      <p>
+                        or
+                        <Link to="/">
+                          <button
+                            type="button"
+                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                          >
+                            Continue Shopping
+                            <span aria-hidden="true"> &rarr;</span>
+                          </button>
+                        </Link>
+                      </p>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div className="mt-8 h-[20vh] w-full pt-2">
+                  <Loader text="updating..." />
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

@@ -18,12 +18,14 @@ import {
   getFilterProductsAsync,
   selectAllBrands,
   selectAllCategories,
+  selectProductStatus,
   selectProducts,
   selectTotalItems,
 } from "../productSlice";
 import { ITEMS_PER_PAGE } from "../../../app/constants";
 import { discountedPrice } from "../../../app/utils";
 import Pagination from "../../common/pagination/Pagination";
+import Loader from "../../common/Loader/Loader";
 
 const sortOptions = [
   {
@@ -57,6 +59,7 @@ const ProductList = () => {
   const totalItems = useSelector(selectTotalItems);
   const brands = useSelector(selectAllBrands);
   const categories = useSelector(selectAllCategories);
+  const status = useSelector(selectProductStatus);
   const dispatch = useDispatch();
   const [filter, setFilter] = useState({});
   const [sort, setSort] = useState({});
@@ -208,7 +211,7 @@ const ProductList = () => {
                 <DesktopFilter handleFilter={handleFilter} filters={filters} />
 
                 {/* Product grid */}
-                <ProductGrid products={products} />
+                <ProductGrid products={products} status={status} />
               </div>
             </section>
           </main>
@@ -405,63 +408,67 @@ function DesktopFilter({ handleFilter, filters }) {
   );
 }
 
-function ProductGrid({ products }) {
+function ProductGrid({ products, status }) {
   return (
     <div className="lg:col-span-3">
-      <div className="bg-white">
-        <div className="mx-auto max-w-2xl px-4 pb-16 sm:px-6 sm:pb-24 lg:max-w-7xl lg:px-8">
-          <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-            Customers also purchased
-          </h2>
+      {status === "idle" ? (
+        <div className="bg-white">
+          <div className="mx-auto max-w-2xl px-4 pb-16 sm:px-6 sm:pb-24 lg:max-w-7xl lg:px-8">
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+              Customers also purchased
+            </h2>
 
-          <div className="mt-6 grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-5">
-            {products?.map((product) => (
-              <div
-                key={product.id}
-                className="group relative border border-solid border-gray-400 p-1"
-              >
-                <Link to={`/product-details/${product.id}`}>
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
-                    <img
-                      src={product.thumbnail}
-                      alt={product.title}
-                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                    />
-                  </div>
-                  <div className="mt-4 flex justify-between">
-                    <div>
-                      <h3 className="text-sm text-gray-700">
-                        <p>
-                          <span
-                            aria-hidden="true"
-                            className="absolute inset-0"
-                          />
-                          {product.title}
+            <div className="mt-6 grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-5">
+              {products?.map((product) => (
+                <div
+                  key={product.id}
+                  className="group relative border border-solid border-gray-400 p-1"
+                >
+                  <Link to={`/product-details/${product.id}`}>
+                    <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
+                      <img
+                        src={product.thumbnail}
+                        alt={product.title}
+                        className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                      />
+                    </div>
+                    <div className="mt-4 flex justify-between">
+                      <div>
+                        <h3 className="text-sm text-gray-700">
+                          <p>
+                            <span
+                              aria-hidden="true"
+                              className="absolute inset-0"
+                            />
+                            {product.title}
+                          </p>
+                        </h3>
+                        <p className="mt-1 text-sm text-gray-500 flex items-center">
+                          <StarIcon className="w-4 h-4" /> {product.rating}
                         </p>
-                      </h3>
-                      <p className="mt-1 text-sm text-gray-500 flex items-center">
-                        <StarIcon className="w-4 h-4" /> {product.rating}
-                      </p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-gray-900">
+                          $
+                          {discountedPrice(
+                            product.price,
+                            product.discountPercentage
+                          )}
+                        </p>
+                        <p className="text-sm line-through font-medium text-gray-400">
+                          ${product.price.toFixed(2)}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm font-medium text-gray-900">
-                        $
-                        {discountedPrice(
-                          product.price,
-                          product.discountPercentage
-                        )}
-                      </p>
-                      <p className="text-sm line-through font-medium text-gray-400">
-                        ${product.price.toFixed(2)}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            ))}
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 }
