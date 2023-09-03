@@ -5,7 +5,6 @@ import {
   selectLoggedInUserInfo,
   selectLoggedInUserOrders,
 } from "../userSlice";
-import { Link } from "react-router-dom";
 import { discountedPrice } from "../../../app/utils";
 
 const UserOrders = () => {
@@ -15,110 +14,118 @@ const UserOrders = () => {
   useEffect(() => {
     dispatch(fetchUserOrdersAsync(user.id));
   }, [dispatch, user]);
-  console.log(orders);
   return (
     <>
-      {orders.map((order) => (
-        <div
-          key={order.id}
-          className="mx-auto bg-white rounded-sm shadow-sm max-w-7xl px-4 sm:px-6 lg:px-8 pb-4"
-        >
-          <div className="mt-8 border-t border-gray-200 px-4 py-6 sm:px-6">
-            <h2 className="font-bold text-5xl mb-4">
-              Order Number #{order.id}
-            </h2>
-            <h5 className="text-2xl mb-4 text-gray-400">
-              Order status: {order.status}
-            </h5>
-            <div className="flow-root">
-              <ul role="list" className="-my-6 divide-y divide-gray-200">
-                {order.cartItems.map((product) => (
-                  <li key={product.id} className="flex py-6">
-                    <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                      <img
-                        src={product.thumbnail}
-                        alt={product.title}
-                        className="h-full w-full object-cover object-center"
-                      />
+      <div className="mx-auto my-4 max-w-6xl px-2 md:my-6 md:px-0">
+        <h2 className="text-3xl font-bold">Order Details</h2>
+        <div className="mt-3 text-sm">
+          Check the status of recent and old orders & discover more products
+        </div>
+        {orders.map((order) => (
+          <div
+            key={order.id}
+            className="mt-8 flex bg-white flex-col overflow-hidden rounded-lg border border-gray-300 md:flex-row"
+          >
+            <div className="w-full bg-[#1F2937] border-r border-gray-300 md:max-w-xs">
+              <div className="p-8">
+                <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-1">
+                  <div className="mb-4">
+                    <div className="text-sm text-white font-semibold">
+                      Order ID
                     </div>
+                    <div className="text-sm font-medium text-gray-300">
+                      #{order.id}
+                    </div>
+                  </div>
+                  <div className="mb-4">
+                    <div className="text-sm text-white font-semibold">
+                      Total Amount
+                    </div>
+                    <div className="text-sm font-medium text-gray-300">
+                      ${order.subTotal}
+                    </div>
+                  </div>
+                  <div className="mb-4">
+                    <div className="text-sm  text-white font-semibold">
+                      Order Status
+                    </div>
+                    <div className="text-sm font-medium text-gray-300">
+                      {order.status}
+                    </div>
+                  </div>
+                  <div className="mb-4">
+                    <div className="text-sm text-white font-semibold">
+                      Total Items
+                    </div>
+                    <div className="text-sm font-medium text-gray-300">
+                      {order.totalItems}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex-1">
+              <div className="p-8">
+                <ul className="-my-7 divide-y divide-gray-200">
+                  {order?.cartItems?.map((item) => (
+                    <li
+                      key={item.id}
+                      className="flex flex-col justify-between space-x-5 py-7 md:flex-row"
+                    >
+                      <div className="flex flex-1 items-stretch">
+                        <div className="flex-shrink-0">
+                          <img
+                            className="h-20 w-20 rounded-lg border border-gray-200 object-contain"
+                            src={item.thumbnail}
+                            alt={item.title}
+                          />
+                        </div>
 
-                    <div className="ml-4 flex flex-1 flex-col">
-                      <div>
-                        <div className="flex justify-between text-base font-medium text-gray-900">
-                          <h3>
-                            <Link to={`/product-details/${product.id}`}>
-                              {product.title}
-                            </Link>
-                          </h3>
-                          <p className="ml-4">
-                            $
-                            {discountedPrice(
-                              product.price,
-                              product.discountPercentage
-                            )}
+                        <div className="ml-5 flex flex-col justify-between">
+                          <div className="flex-1">
+                            <p className="text-sm font-bold text-gray-900">
+                              {item.title}
+                            </p>
+                            <p className="mt-1.5 text-sm font-medium text-gray-500">
+                              {item.brand}
+                            </p>
+                          </div>
+
+                          <p className="mt-4 text-sm font-medium text-gray-500">
+                            x {item.quantity}
                           </p>
                         </div>
-                        <p className="mt-1 text-sm text-gray-500">
-                          {product.brand}
+                      </div>
+
+                      <div className="ml-auto flex flex-col items-end justify-between">
+                        <p className="text-right text-sm font-bold text-gray-900">
+                          $
+                          {discountedPrice(item.price, item.discountPercentage)}
                         </p>
                       </div>
-                      <div className="flex flex-1 items-end justify-between text-sm">
-                        <div className="flex items-center gap-3">
-                          <p className="text-gray-500">
-                            Qty : {product.quantity}{" "}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-            <div className="flex justify-between my-4 border-b-2 border-gray-200 pb-3  text-base font-medium text-gray-900">
-              <p>Subtotal</p>
-              <p>${order.subTotal}</p>
-            </div>
-            <div className="flex justify-between my-4 text-base font-medium text-gray-900">
-              <p>Total Items</p>
-              <p>{order.totalItems}</p>
-            </div>
-            <p className="mt-0.5 text-sm text-gray-500">Shipping Address</p>
-          </div>
-
-          <ul role="list">
-            {order?.user?.addresses?.map((ad) => (
-              <div className=" border border-gray-600 mb-3" key={ad.email}>
-                <li className="flex justify-between gap-x-6 p-5 ">
-                  <div className="flex min-w-0 gap-x-4 items-center">
-                    <div className="min-w-0 flex-auto">
-                      <p className="text-sm font-semibold leading-6 text-gray-900">
-                        {ad.state}
-                      </p>
-                      <p className="mt-1 truncate text-xs leading-5 text-gray-500">
-                        Phone : {ad.phoneNumber}
-                      </p>
-                      <p className="mt-1 truncate text-xs leading-5 text-gray-500">
-                        E-mail : {ad.email}
-                      </p>
-                    </div>
-                  </div>
-                  <div className=" shrink-0 sm:flex sm:flex-col sm:items-end">
-                    <p className="text-sm leading-6 text-gray-900">
-                      {ad.country}
-                    </p>
-                    <p className="text-sm leading-6 text-gray-900">
-                      {ad.state}, {ad.city}, {ad.pinCode}
-                    </p>
-                  </div>
-                </li>
+                    </li>
+                  ))}
+                </ul>
+                <hr className="my-8 border-t border-t-gray-200" />
+                <div className="space-x-4">
+                  <button
+                    type="button"
+                    className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                  >
+                    View Order
+                  </button>
+                  <button
+                    type="button"
+                    className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                  >
+                    View Invoice
+                  </button>
+                </div>
               </div>
-            ))}
-          </ul>
-        </div>
-      ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </>
   );
 };
