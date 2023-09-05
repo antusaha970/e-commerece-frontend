@@ -3,7 +3,10 @@ import axios from "axios";
 //  Function for creating user
 export async function createUser(userData) {
   try {
-    const response = await axios.post("http://localhost:8080/users", userData);
+    const response = await axios.post(
+      "http://localhost:8080/auth/signup",
+      userData
+    );
     return response.data;
   } catch (error) {
     console.error(error);
@@ -12,23 +15,27 @@ export async function createUser(userData) {
 }
 
 // Function for checking user
-export async function checkUser(loginInfo) {
-  try {
-    const email = loginInfo.email;
-    const password = loginInfo.password;
-    const response = await axios.get(
-      `http://localhost:8080/users?email=${email}`
-    );
-    if (response.data.length) {
-      if (password === response.data[0].password) {
-        return response.data[0];
+export function checkUser(loginInfo) {
+  // eslint-disable-next-line no-async-promise-executor
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:8080/auth/login`,
+        loginInfo
+      );
+
+      if (response.status === 200) {
+        resolve(response.data); // Resolve the promise with the data
+      } else if (response.status === 401) {
+        reject("Unauthorized: Wrong credentials"); // Reject with an error
       } else {
-        throw new Error("Wrong password");
+        reject(`HTTP Error: ${response.status}`); // Reject with an error
       }
+    } catch (error) {
+      console.log(error.response.data.status);
+      reject(error.response.data.status); // Reject with an error
     }
-  } catch (error) {
-    throw new Error(error.message);
-  }
+  });
 }
 
 // Function for sign out user
