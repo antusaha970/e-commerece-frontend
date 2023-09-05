@@ -15,13 +15,14 @@ const Cart = () => {
   const subTotal = cartItems.reduce(
     (acc, item) =>
       acc +
-      discountedPrice(item.price, item.discountPercentage) * item.quantity,
+      discountedPrice(item.product.price, item.product.discountPercentage) *
+        item.quantity,
     0
   );
   const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
   const dispatch = useDispatch();
   const handleUpdateQty = (e, product) => {
-    dispatch(updateCartAsync({ ...product, quantity: +e.target.value }));
+    dispatch(updateCartAsync({ id: product.id, quantity: +e.target.value }));
   };
   const handleDeleteItem = (product) => {
     dispatch(deleteItemFromCartAsync(product.id));
@@ -35,11 +36,11 @@ const Cart = () => {
             <div className="flow-root">
               <ul role="list" className="-my-6 divide-y divide-gray-200">
                 {cartItems.map((product) => (
-                  <li key={product.id} className="flex py-6">
+                  <li key={product.product.id} className="flex py-6">
                     <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                       <img
-                        src={product.thumbnail}
-                        alt={product.title}
+                        src={product.product.thumbnail}
+                        alt={product.product.title}
                         className="h-full w-full object-cover object-center"
                       />
                     </div>
@@ -48,20 +49,20 @@ const Cart = () => {
                       <div>
                         <div className="flex justify-between text-base font-medium text-gray-900">
                           <h3>
-                            <Link to={`/product-details/${product.id}`}>
-                              {product.title}
+                            <Link to={`/product-details/${product.product.id}`}>
+                              {product.product.title}
                             </Link>
                           </h3>
                           <p className="ml-4">
                             $
                             {discountedPrice(
-                              product.price,
-                              product.discountPercentage
+                              product.product.price,
+                              product.product.discountPercentage
                             )}
                           </p>
                         </div>
                         <p className="mt-1 text-sm text-gray-500">
-                          {product.brand}
+                          {product.product.brand}
                         </p>
                       </div>
                       <div className="flex flex-1 items-end justify-between text-sm">
@@ -81,6 +82,7 @@ const Cart = () => {
                             className="font-medium text-indigo-600 hover:text-indigo-500"
                             onClick={() => handleDeleteItem(product)}
                           >
+                            {console.log(product.id)}
                             Remove
                           </button>
                         </div>

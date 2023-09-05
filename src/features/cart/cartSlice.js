@@ -96,10 +96,12 @@ export const cartSlice = createSlice({
         const index = state.items.findIndex(
           (item) => item.id === action.payload.id
         );
+        console.log(action.payload.id);
+        console.log(index);
         state.items.splice(index, 1);
       })
       .addCase(deleteItemFromCartAsync.rejected, (state) => {
-        state.status = "failed";
+        state.status = "idle";
       })
       .addCase(resetCartAsync.pending, (state) => {
         state.status = "loading";

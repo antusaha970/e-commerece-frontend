@@ -14,37 +14,6 @@ import { discountedPrice } from "../../../app/utils";
 import { toast } from "react-toastify";
 import Loader from "../../common/Loader/Loader";
 
-// const product = {
-//   breadcrumbs: [
-//     { id: 1, name: "Men", href: "#" },
-//     { id: 2, name: "Clothing", href: "#" },
-//   ],
-//   colors: [
-//     { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-//     { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
-//     { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
-//   ],
-//   sizes: [
-//     { name: "XXS", inStock: false },
-//     { name: "XS", inStock: true },
-//     { name: "S", inStock: true },
-//     { name: "M", inStock: true },
-//     { name: "L", inStock: true },
-//     { name: "XL", inStock: true },
-//     { name: "2XL", inStock: true },
-//     { name: "3XL", inStock: true },
-//   ],
-//   highlights: [
-//     "Hand cut and sewn locally",
-//     "Dyed with our proprietary colors",
-//     "Pre-washed & pre-shrunk",
-//     "Ultra-soft 100% cotton",
-//   ],
-//   details:
-//     'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
-// };
-// const reviews = { href: "#", average: 4, totalCount: 117 };
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -84,7 +53,7 @@ export default function ProductDetails() {
   }, [dispatch, params.id]);
   const handleAddToCart = (e) => {
     e.preventDefault();
-    if (cartItems.findIndex((item) => item.id === product.id) >= 0) {
+    if (cartItems.findIndex((item) => item.product.id === product.id) >= 0) {
       toast.info("Already added to cart", {
         position: "top-right",
         autoClose: 2000,
@@ -96,7 +65,7 @@ export default function ProductDetails() {
         theme: "light",
       });
     } else {
-      const cartItem = { ...product, productId: product.id, user: user.id };
+      const cartItem = { product: product.id, user: user.id, quantity: 1 };
       dispatch(addToCartAsync(cartItem));
       toast.success("Added to cart", {
         position: "top-right",
