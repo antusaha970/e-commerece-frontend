@@ -77,7 +77,7 @@ const CheckOutPage = () => {
         cartItems,
         totalItems,
         subTotal,
-        user,
+        user: user.id,
         paymentMethod,
         selectedAddress,
         status: "pending",

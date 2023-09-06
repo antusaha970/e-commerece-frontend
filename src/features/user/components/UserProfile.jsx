@@ -90,19 +90,19 @@ const UserProfile = () => {
           <h5 className="text-2xl mb-4 text-gray-400">
             User email: {user?.email}
           </h5>
-          {user.role === "admin" && (
+          {user?.role === "admin" && (
             <h5 className="text-2xl mb-4 text-gray-400">
               Your role: {user?.role}
             </h5>
           )}
-          {user.role === "admin" && (
+          {user?.role === "admin" && (
             <Link to={"/admin"}>
               <button className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 mt-5">
                 Go to admin panel
               </button>
             </Link>
           )}
-          {user.role === "admin" && (
+          {user?.role === "admin" && (
             <Link to={"/admin/view-orders"}>
               <button className="rounded-md ml-4 bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 mt-5">
                 View Orders

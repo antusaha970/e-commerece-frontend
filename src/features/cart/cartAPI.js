@@ -2,7 +2,6 @@ import axios from "axios";
 
 // function to add a item to the cart list
 export async function addToCart(item) {
-  console.log(item);
   try {
     const response = await axios.post("http://localhost:8080/cart", item);
     return response.data;
