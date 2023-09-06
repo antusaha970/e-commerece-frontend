@@ -8,14 +8,16 @@ import {
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { selectLoggedInUser } from "../features/auth/authSlice";
 import {
   createOrderAsync,
   selectCurrentOrder,
 } from "../features/order/orderSlice";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { updateUserAsync } from "../features/user/userSlice";
+import {
+  selectLoggedInUserInfo,
+  updateUserAsync,
+} from "../features/user/userSlice";
 import { discountedPrice } from "../app/utils";
 import Loader from "../features/common/Loader/Loader";
 const CheckOutPage = () => {
@@ -25,7 +27,7 @@ const CheckOutPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const user = useSelector(selectLoggedInUser);
+  const user = useSelector(selectLoggedInUserInfo);
   const cartItems = useSelector(selectCartItems);
   const currentOrder = useSelector(selectCurrentOrder);
   const status = useSelector(selectCartStatus);
