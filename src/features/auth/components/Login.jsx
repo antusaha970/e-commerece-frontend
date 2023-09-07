@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import {
   checkUserAsync,
+  resetAuthError,
   selectLoggedInUser,
   selectLoginError,
   selectLoginStatus,
@@ -28,6 +29,13 @@ const Login = () => {
   const onSubmit = (data) => {
     dispatch(checkUserAsync(data));
   };
+
+  const handleResetError = () => {
+    if (loginError) {
+      dispatch(resetAuthError());
+    }
+  };
+
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -94,6 +102,7 @@ const Login = () => {
                   <div className="mt-2">
                     <input
                       id="password"
+                      onClick={handleResetError}
                       {...register("password", {
                         required: "Password is required",
                         pattern: {

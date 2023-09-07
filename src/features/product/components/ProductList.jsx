@@ -9,7 +9,6 @@ import {
   PlusIcon,
   Squares2X2Icon,
 } from "@heroicons/react/20/solid";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -102,9 +101,11 @@ const ProductList = () => {
     setPage(1);
   }, [totalItems, sort]);
   useEffect(() => {
-    dispatch(getAllBrandsAsync());
-    dispatch(getAllCategoriesAsync());
-  }, [dispatch]);
+    if (brands.length <= 0 && categories.length <= 0) {
+      dispatch(getAllBrandsAsync());
+      dispatch(getAllCategoriesAsync());
+    }
+  }, [dispatch, brands, categories]);
 
   // All filters options
   const filters = [
