@@ -362,7 +362,7 @@ const UserProfile = () => {
 
         <ul role="list">
           {user?.addresses?.map((ad, index) => (
-            <>
+            <div key={index}>
               {selectedAddressInd === index ? (
                 <form
                   className="bg-white p-4 mt-8"
@@ -646,7 +646,7 @@ const UserProfile = () => {
                   </div>
                 </li>
               </div>
-            </>
+            </div>
           ))}
         </ul>
       </div>

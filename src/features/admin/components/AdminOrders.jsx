@@ -72,24 +72,24 @@ const AdminOrders = () => {
                         </div>
                       </td>
                       {order.cartItems.map((item) => (
-                        <div key={item.id}>
+                        <div key={item.product.id}>
                           <td className="py-3 px-6 text-left">
                             <div className="flex items-center">
                               <div className="mr-2">
                                 <img
                                   className="w-6 h-6 rounded-full"
-                                  src={item.thumbnail}
+                                  src={item.product.thumbnail}
                                 />
                               </div>
-                              <span>{item.title}</span>
+                              <span>{item.product.title}</span>
                               <br />
                             </div>
-                            <span>Qty: {item.quantity}</span>
+                            <span>Qty: {item.product.quantity}</span>
                             <p>
                               <b>Price: &nbsp;</b>$
                               {discountedPrice(
-                                item.price,
-                                item.discountPercentage
+                                item.product.price,
+                                item.product.discountPercentage
                               )}
                             </p>
                           </td>

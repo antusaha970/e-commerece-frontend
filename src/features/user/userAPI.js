@@ -4,7 +4,7 @@ import axios from "axios";
 export async function fetchUserOrders(userId) {
   try {
     const response = await axios.get(
-      `http://localhost:8080/orders?user=${userId}`
+      `http://localhost:8080/orders/user/${userId}`
     );
     return response.data;
   } catch (error) {
