@@ -9,7 +9,7 @@ import ProductDetailsPage from "./pages/ProductDetailsPage";
 import Protected from "./features/auth/components/Protected";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectLoggedInUser } from "./features/auth/authSlice";
+import { checkAuthAsync, selectLoggedInUser } from "./features/auth/authSlice";
 import { getCartItemsAsync } from "./features/cart/cartSlice";
 import NotFound404 from "./pages/NotFound404";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
@@ -147,6 +147,9 @@ const router = createBrowserRouter([
 function App() {
   const user = useSelector(selectLoggedInUser);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(checkAuthAsync());
+  }, [dispatch]);
   useEffect(() => {
     if (user) {
       dispatch(getCartItemsAsync());
