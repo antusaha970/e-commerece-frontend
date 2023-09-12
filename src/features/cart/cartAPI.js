@@ -11,9 +11,9 @@ export async function addToCart(item) {
   }
 }
 // function to add a item to the cart list
-export async function loadItemsToCart(id) {
+export async function loadItemsToCart() {
   try {
-    const response = await axios.get(`http://localhost:8080/cart?user=${id}`);
+    const response = await axios.get(`http://localhost:8080/cart`);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -47,9 +47,9 @@ export async function deleteItemFromCart(itemId) {
 }
 
 // For deleting item from the cart
-export async function resetCart(userId) {
+export async function resetCart() {
   try {
-    const items = await loadItemsToCart(userId);
+    const items = await loadItemsToCart();
     for (let item of items) {
       await deleteItemFromCart(item.id);
     }

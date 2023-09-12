@@ -3,7 +3,7 @@ import { checkUser, createUser, signOut } from "./authAPI";
 import { updateUserAsync } from "../user/userSlice";
 
 const initialState = {
-  loggedInUser: null,
+  loggedInUserToken: null,
   status: "idle",
   error: null,
 };
@@ -48,7 +48,7 @@ export const authSlice = createSlice({
       })
       .addCase(createUserAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.loggedInUser = action.payload;
+        state.loggedInUserToken = action.payload;
       })
       .addCase(createUserAsync.rejected, (state) => {
         state.status = "failed";
@@ -58,7 +58,7 @@ export const authSlice = createSlice({
       })
       .addCase(checkUserAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.loggedInUser = action.payload;
+        state.loggedInUserToken = action.payload;
       })
       .addCase(checkUserAsync.rejected, (state, action) => {
         state.status = "idle";
@@ -69,7 +69,7 @@ export const authSlice = createSlice({
       })
       .addCase(updateUserAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.loggedInUser = action.payload;
+        state.loggedInUserToken = action.payload;
       })
       .addCase(updateUserAsync.rejected, (state) => {
         state.status = "failed";
@@ -79,7 +79,7 @@ export const authSlice = createSlice({
       })
       .addCase(signOutAsync.fulfilled, (state) => {
         state.status = "idle";
-        state.loggedInUser = null;
+        state.loggedInUserToken = null;
       })
       .addCase(signOutAsync.rejected, (state) => {
         state.status = "failed";
@@ -90,7 +90,7 @@ export const authSlice = createSlice({
 export const { resetAuthError } = authSlice.actions;
 
 // Selectors
-export const selectLoggedInUser = (state) => state.auth.loggedInUser;
+export const selectLoggedInUser = (state) => state.auth.loggedInUserToken;
 export const selectLoginError = (state) => state.auth.error;
 export const selectLoginStatus = (state) => state.auth.status;
 

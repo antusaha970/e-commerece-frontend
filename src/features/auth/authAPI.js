@@ -32,8 +32,8 @@ export function checkUser(loginInfo) {
         reject(`HTTP Error: ${response.status}`); // Reject with an error
       }
     } catch (error) {
-      console.log(error.response.data.status);
-      reject(error.response.data.status); // Reject with an error
+      console.log({ error });
+      reject(error.response.data); // Reject with an error
     }
   });
 }

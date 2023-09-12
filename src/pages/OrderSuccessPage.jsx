@@ -1,18 +1,16 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { selectLoggedInUser } from "../features/auth/authSlice";
 import { resetCartAsync } from "../features/cart/cartSlice";
 import { resetCurrentOrder } from "../features/order/orderSlice";
 
 const OrderSuccessPage = () => {
   const params = useParams();
-  const user = useSelector(selectLoggedInUser);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(resetCartAsync(user.id));
+    dispatch(resetCartAsync());
     dispatch(resetCurrentOrder());
-  }, [user, dispatch]);
+  }, [dispatch]);
   return (
     <main className="grid min-h-screen place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
       <div className="text-center">

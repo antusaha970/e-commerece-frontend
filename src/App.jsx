@@ -149,8 +149,8 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     if (user) {
-      dispatch(getCartItemsAsync(user.id));
-      dispatch(getLoggedInUserInfoAsync(user.id));
+      dispatch(getCartItemsAsync());
+      dispatch(getLoggedInUserInfoAsync());
     }
   }, [user, dispatch]);
   return (

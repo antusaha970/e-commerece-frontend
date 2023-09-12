@@ -45,10 +45,9 @@ export default function AdminProductDetails() {
   useEffect(() => {
     dispatch(getProductByIdAsync(params.id));
   }, [dispatch, params.id]);
-  console.log(user);
   const handleAddToCart = (e) => {
     e.preventDefault();
-    const cartItem = { ...product, user: user.id };
+    const cartItem = { ...product };
     dispatch(addToCartAsync(cartItem));
   };
   return (

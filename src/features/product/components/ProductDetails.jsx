@@ -8,7 +8,6 @@ import {
   selectProductById,
   selectProductStatus,
 } from "../productSlice";
-import { selectLoggedInUser } from "../../auth/authSlice";
 import { addToCartAsync, selectCartItems } from "../../cart/cartSlice";
 import { discountedPrice } from "../../../app/utils";
 import { toast } from "react-toastify";
@@ -45,7 +44,6 @@ export default function ProductDetails() {
   const params = useParams();
   const product = useSelector(selectProductById);
   const dispatch = useDispatch();
-  const user = useSelector(selectLoggedInUser);
   const cartItems = useSelector(selectCartItems);
   const status = useSelector(selectProductStatus);
   useEffect(() => {
@@ -65,7 +63,7 @@ export default function ProductDetails() {
         theme: "light",
       });
     } else {
-      const cartItem = { product: product.id, user: user.id, quantity: 1 };
+      const cartItem = { product: product.id, quantity: 1 };
       dispatch(addToCartAsync(cartItem));
       toast.success("Added to cart", {
         position: "top-right",

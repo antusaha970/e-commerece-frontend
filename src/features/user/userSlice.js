@@ -16,8 +16,8 @@ export const fetchUserOrdersAsync = createAsyncThunk(
 );
 export const getLoggedInUserInfoAsync = createAsyncThunk(
   "user/fetchLoggedInUserInfo",
-  async (id) => {
-    const response = await fetchLoggedInUserInfo(id);
+  async () => {
+    const response = await fetchLoggedInUserInfo();
     return response;
   }
 );

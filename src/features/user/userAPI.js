@@ -14,9 +14,9 @@ export async function fetchUserOrders(userId) {
 }
 
 // For fetching logged in users info
-export async function fetchLoggedInUserInfo(userId) {
+export async function fetchLoggedInUserInfo() {
   try {
-    const response = await axios.get(`http://localhost:8080/users/${userId}`);
+    const response = await axios.get(`http://localhost:8080/users/own`);
     return response.data;
   } catch (error) {
     console.error(error);
