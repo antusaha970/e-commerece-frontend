@@ -44,7 +44,7 @@ export function checkAuth() {
   return new Promise(async (resolve, reject) => {
     try {
       const response = await axios.get(`http://localhost:8080/auth/check`);
-
+      console.log(response.status);
       if (response.status === 200) {
         resolve(response.data); // Resolve the promise with the data
       } else if (response.status === 401) {

@@ -29,14 +29,17 @@ export const checkUserAsync = createAsyncThunk(
   }
 );
 
-export const checkAuthAsync = createAsyncThunk("auth/checkAuth", async () => {
-  try {
-    const response = await checkAuth();
-    return response;
-  } catch (error) {
-    return error;
+export const checkAuthAsync = createAsyncThunk(
+  "auth/checkAuth",
+  async (j = 1, { rejectWithValue }) => {
+    try {
+      const response = await checkAuth();
+      return response;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
   }
-});
+);
 
 export const signOutAsync = createAsyncThunk("auth/signOut", async () => {
   const response = await signOut();
@@ -83,7 +86,7 @@ export const authSlice = createSlice({
       })
       .addCase(checkAuthAsync.rejected, (state, action) => {
         state.userChecked = true;
-        state.error = action.payload;
+        // state.error = action.payload;
       })
       .addCase(updateUserAsync.pending, (state) => {
         state.status = "loading";
