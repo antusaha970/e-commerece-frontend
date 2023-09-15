@@ -1,12 +1,9 @@
-import axios from "axios";
+import { client } from "../../app/utils";
 
 //  Function for making order
 export async function createOrder(orderData) {
   try {
-    const response = await axios.post(
-      "http://localhost:8080/orders",
-      orderData
-    );
+    const response = await client.post("/orders", orderData);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -23,9 +20,7 @@ export async function fetchAllOrders(pagination) {
   }
 
   try {
-    const response = await axios.get(
-      `http://localhost:8080/orders?${queryString}`
-    );
+    const response = await client.get(`/orders?${queryString}`);
     const totalItems = response.headers.get("X-Total-Count");
     return { orders: response.data, totalItems };
   } catch (error) {
@@ -37,10 +32,7 @@ export async function fetchAllOrders(pagination) {
 // For updating a order
 export async function updateOrder(order) {
   try {
-    const response = await axios.patch(
-      `http://localhost:8080/orders/${order.id}`,
-      order
-    );
+    const response = await client.patch(`/orders/${order.id}`, order);
     return response.data;
   } catch (error) {
     console.error(error);

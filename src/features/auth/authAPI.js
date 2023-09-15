@@ -1,12 +1,9 @@
-import axios from "axios";
+import { client } from "../../app/utils";
 
 //  Function for creating user
 export async function createUser(userData) {
   try {
-    const response = await axios.post(
-      "http://localhost:8080/auth/signup",
-      userData
-    );
+    const response = await client.post("/auth/signup", userData);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -19,10 +16,7 @@ export function checkUser(loginInfo) {
   // eslint-disable-next-line no-async-promise-executor
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await axios.post(
-        `http://localhost:8080/auth/login`,
-        loginInfo
-      );
+      const response = await client.post(`/auth/login`, loginInfo);
 
       if (response.status === 200) {
         resolve(response.data); // Resolve the promise with the data
@@ -43,7 +37,7 @@ export function checkAuth() {
   // eslint-disable-next-line no-async-promise-executor
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await axios.get(`http://localhost:8080/auth/check`);
+      const response = await client.get(`/auth/check`);
       console.log(response.status);
       if (response.status === 200) {
         resolve(response.data); // Resolve the promise with the data

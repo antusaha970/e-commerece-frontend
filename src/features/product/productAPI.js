@@ -1,9 +1,9 @@
-import axios from "axios";
+import { client } from "../../app/utils";
 
 // For fetch all products
 export async function fetchAllProducts() {
   try {
-    const response = await axios.get("http://localhost:8080/products");
+    const response = await client.get("/products");
     return response.data;
   } catch (error) {
     console.error(error);
@@ -32,9 +32,7 @@ export async function fetchFilterProducts(filter, sort, pagination) {
   }
 
   try {
-    const response = await axios.get(
-      `http://localhost:8080/products?${queryString}`
-    );
+    const response = await client.get(`/products?${queryString}`);
     const totalItems = response.headers.get("X-Total-Count");
     return { products: response.data, totalItems };
   } catch (error) {
@@ -46,7 +44,7 @@ export async function fetchFilterProducts(filter, sort, pagination) {
 // For fetching product by ID
 export async function fetchProductById(id) {
   try {
-    const response = await axios.get(`http://localhost:8080/products/${id}`);
+    const response = await client.get(`/products/${id}`);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -57,7 +55,7 @@ export async function fetchProductById(id) {
 // For fetching all brands
 export async function fetchAllBrands() {
   try {
-    const response = await axios.get("http://localhost:8080/brands");
+    const response = await client.get("/brands");
     return response.data;
   } catch (error) {
     console.error(error);
@@ -68,7 +66,7 @@ export async function fetchAllBrands() {
 // For fetching all categories
 export async function fetchAllCategories() {
   try {
-    const response = await axios.get("http://localhost:8080/categories");
+    const response = await client.get("/categories");
     return response.data;
   } catch (error) {
     console.error(error);
@@ -79,10 +77,7 @@ export async function fetchAllCategories() {
 // For create a new product
 export async function createProduct(product) {
   try {
-    const response = await axios.post(
-      "http://localhost:8080/products",
-      product
-    );
+    const response = await client.post("/products", product);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -93,10 +88,7 @@ export async function createProduct(product) {
 // For updating a single product
 export async function updateProduct(product) {
   try {
-    const response = await axios.patch(
-      `http://localhost:8080/products/${product.id}`,
-      product
-    );
+    const response = await client.patch(`/products/${product.id}`, product);
     return response.data;
   } catch (error) {
     console.error(error);

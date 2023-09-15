@@ -1,11 +1,9 @@
-import axios from "axios";
+import { client } from "../../app/utils";
 
 // For fetching user orders
 export async function fetchUserOrders(userId) {
   try {
-    const response = await axios.get(
-      `http://localhost:8080/orders/user/${userId}`
-    );
+    const response = await client.get(`/orders/user/${userId}`);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -16,7 +14,7 @@ export async function fetchUserOrders(userId) {
 // For fetching logged in users info
 export async function fetchLoggedInUserInfo() {
   try {
-    const response = await axios.get(`http://localhost:8080/users/own`);
+    const response = await client.get(`/users/own`);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -27,10 +25,7 @@ export async function fetchLoggedInUserInfo() {
 //  Function for updating user information
 export async function updateUser(userData) {
   try {
-    const response = await axios.patch(
-      `http://localhost:8080/users/${userData.id}`,
-      userData
-    );
+    const response = await client.patch(`/users/${userData.id}`, userData);
     return response.data;
   } catch (error) {
     console.error(error);

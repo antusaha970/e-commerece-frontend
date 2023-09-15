@@ -1,9 +1,9 @@
-import axios from "axios";
+import { client } from "../../app/utils";
 
 // function to add a item to the cart list
 export async function addToCart(item) {
   try {
-    const response = await axios.post("http://localhost:8080/cart", item);
+    const response = await client.post("/cart", item);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -13,7 +13,7 @@ export async function addToCart(item) {
 // function to add a item to the cart list
 export async function loadItemsToCart() {
   try {
-    const response = await axios.get(`http://localhost:8080/cart`);
+    const response = await client.get(`/cart`);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -24,10 +24,7 @@ export async function loadItemsToCart() {
 // For updating the cart
 export async function updateCart(item) {
   try {
-    const response = await axios.patch(
-      `http://localhost:8080/cart/${item.id}`,
-      item
-    );
+    const response = await client.patch(`/cart/${item.id}`, item);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -38,7 +35,7 @@ export async function updateCart(item) {
 // For deleting item from the cart
 export async function deleteItemFromCart(itemId) {
   try {
-    const response = await axios.delete(`http://localhost:8080/cart/${itemId}`);
+    const response = await client.delete(`/cart/${itemId}`);
     return response.data;
   } catch (error) {
     console.error(error);
