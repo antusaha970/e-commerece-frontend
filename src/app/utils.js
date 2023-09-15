@@ -5,7 +5,7 @@ const discountedPrice = (price, discount) => {
 };
 
 const client = axios.create({
-  baseURL: "",
+  baseURL: "http://localhost:8080",
 });
 
 export { discountedPrice, client };
