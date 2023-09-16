@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getProductByIdAsync,
@@ -11,6 +11,7 @@ import { addToCartAsync, selectCartItems } from "../../cart/cartSlice";
 import { discountedPrice } from "../../../app/utils";
 import { toast } from "react-toastify";
 import Loader from "../../common/Loader/Loader";
+import { selectLoggedInUser } from "../../auth/authSlice";
 
 export default function ProductDetails() {
   const [quantity, setQuantity] = useState(1);
@@ -19,26 +20,41 @@ export default function ProductDetails() {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const status = useSelector(selectProductStatus);
+  const user = useSelector(selectLoggedInUser);
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(getProductByIdAsync(params.id));
   }, [dispatch, params.id]);
   const handleAddToCart = (e) => {
     e.preventDefault();
-    if (cartItems.findIndex((item) => item.product.id === product.id) >= 0) {
-      toast.info("Already added to cart", {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+    if (user) {
+      if (cartItems.findIndex((item) => item.product.id === product.id) >= 0) {
+        toast.info("Already added to cart", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      } else {
+        const cartItem = { product: product.id, quantity };
+        dispatch(addToCartAsync(cartItem));
+        toast.success("Added to cart", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
     } else {
-      const cartItem = { product: product.id, quantity };
-      dispatch(addToCartAsync(cartItem));
-      toast.success("Added to cart", {
+      toast.info("Please login for adding items to cart", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -48,6 +64,7 @@ export default function ProductDetails() {
         progress: undefined,
         theme: "light",
       });
+      navigate("/login");
     }
   };
   return (
