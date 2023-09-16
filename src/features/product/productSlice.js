@@ -6,6 +6,7 @@ import {
   fetchAllProducts,
   fetchFilterProducts,
   fetchProductById,
+  fetchSearchedProducts,
   updateProduct,
 } from "./productAPI";
 
@@ -36,12 +37,24 @@ export const getProductByIdAsync = createAsyncThunk(
 
 export const getFilterProductsAsync = createAsyncThunk(
   "product/fetchFilterProducts",
-  async ({ filter, sort, pagination }) => {
-    const response = await fetchFilterProducts(filter, sort, pagination);
+  async ({ filter, sort, pagination, searchText }) => {
+    const response = await fetchFilterProducts(
+      filter,
+      sort,
+      pagination,
+      searchText
+    );
     return response;
   }
 );
 
+export const fetchSearchedProductsAsync = createAsyncThunk(
+  "product/fetchSearchedProducts",
+  async (query) => {
+    const response = await fetchSearchedProducts(query);
+    return response;
+  }
+);
 export const getAllBrandsAsync = createAsyncThunk(
   "product/fetchAllBrands",
   async () => {
@@ -109,6 +122,17 @@ export const productSlice = createSlice({
         state.totalItems = action.payload.totalItems;
       })
       .addCase(getFilterProductsAsync.rejected, (state) => {
+        state.status = "failed";
+      })
+      .addCase(fetchSearchedProductsAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchSearchedProductsAsync.fulfilled, (state, action) => {
+        state.status = "idle";
+        state.products = action.payload.products;
+        state.totalItems = action.payload.totalItems;
+      })
+      .addCase(fetchSearchedProductsAsync.rejected, (state) => {
         state.status = "failed";
       })
       .addCase(getAllBrandsAsync.pending, () => {})

@@ -63,7 +63,8 @@ const ProductList = () => {
   const [filter, setFilter] = useState({});
   const [sort, setSort] = useState({});
   const [page, setPage] = useState(1);
-
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchText, setSearchText] = useState("");
   // This function handle filter of category and brands
   const handleFilter = (e, section, option) => {
     // filter = {"category" : ["phones","laptops"]}
@@ -82,6 +83,7 @@ const ProductList = () => {
     }
     setFilter(newFilter);
   };
+  console.log(filter);
   // This function handle sorting of products
   const handleSort = (option) => {
     const newSort = { _sort: option.sort, _order: option.order };
@@ -92,10 +94,17 @@ const ProductList = () => {
     setPage(currentPage);
   };
 
+  // For handling search products
+  console.log(searchQuery);
+  const handleSearchProduct = () => {
+    setFilter({});
+    setSearchText(searchQuery);
+  };
+
   useEffect(() => {
     const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
-    dispatch(getFilterProductsAsync({ filter, sort, pagination }));
-  }, [dispatch, filter, sort, page]);
+    dispatch(getFilterProductsAsync({ filter, sort, pagination, searchText }));
+  }, [dispatch, filter, sort, page, searchText]);
 
   useEffect(() => {
     setPage(1);
@@ -212,7 +221,13 @@ const ProductList = () => {
                 <DesktopFilter handleFilter={handleFilter} filters={filters} />
 
                 {/* Product grid */}
-                <ProductGrid products={products} status={status} />
+                <ProductGrid
+                  products={products}
+                  status={status}
+                  searchQuery={searchQuery}
+                  handleSearchProduct={handleSearchProduct}
+                  setSearchQuery={setSearchQuery}
+                />
               </div>
             </section>
           </main>
@@ -409,15 +424,42 @@ function DesktopFilter({ handleFilter, filters }) {
   );
 }
 
-function ProductGrid({ products, status }) {
+function ProductGrid({
+  products,
+  status,
+  searchQuery,
+  handleSearchProduct,
+  setSearchQuery,
+}) {
   return (
     <div className="lg:col-span-3">
       {status === "idle" ? (
         <div className="bg-white">
           <div className="mx-auto max-w-2xl px-4 pb-16 sm:px-6 sm:pb-24 lg:max-w-7xl lg:px-8">
-            <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-              Customers also purchased
-            </h2>
+            <div className="w-full">
+              <div className="flex w-full items-center space-x-2 md:w-full">
+                <input
+                  className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  type="text"
+                  placeholder="Search products..."
+                  list="products"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                ></input>
+                <datalist id="products">
+                  <option value="smartphone">smartphone</option>
+                  <option value="laptop">laptop</option>
+                  <option value="groceries">groceries</option>
+                </datalist>
+                <button
+                  onClick={handleSearchProduct}
+                  type="button"
+                  className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                >
+                  Search
+                </button>
+              </div>
+            </div>
 
             <div className="mt-6 grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-5">
               {products?.map((product) => (

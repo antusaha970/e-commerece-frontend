@@ -12,7 +12,12 @@ export async function fetchAllProducts() {
 }
 
 // For fetching filtered products
-export async function fetchFilterProducts(filter, sort, pagination) {
+export async function fetchFilterProducts(
+  filter,
+  sort,
+  pagination,
+  searchText = ""
+) {
   // filter = {"category" : ["phones","laptops"]}
   // sort = {_sort: "price", order: "asc"}
   // pagination = {_page: 1, _limit: 10}
@@ -24,15 +29,29 @@ export async function fetchFilterProducts(filter, sort, pagination) {
       queryString += `${key}=${lastValue}&`;
     }
   }
+
   for (let key in sort) {
     queryString += `${key}=${sort[key]}&`;
   }
   for (let key in pagination) {
     queryString += `${key}=${pagination[key]}&`;
   }
+  queryString += `searchText=${searchText}&`;
 
   try {
     const response = await client.get(`/products?${queryString}`);
+    const totalItems = response.headers.get("X-Total-Count");
+    return { products: response.data, totalItems };
+  } catch (error) {
+    console.error(error);
+    return error.message;
+  }
+}
+
+// For search products by query
+export async function fetchSearchedProducts(query) {
+  try {
+    const response = await client.get(`/products/search?text=${query}`);
     const totalItems = response.headers.get("X-Total-Count");
     return { products: response.data, totalItems };
   } catch (error) {

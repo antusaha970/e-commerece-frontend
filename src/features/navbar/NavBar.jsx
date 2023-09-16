@@ -1,15 +1,10 @@
-import { Fragment, useState } from "react";
-// import { Disclosure, Menu, Transition } from "@headlessui/react";
-import {
-  Bars3Icon,
-  ShoppingCartIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { useState } from "react";
+import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectCartItems } from "../cart/cartSlice";
 
-import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const menuItems = [
   {
@@ -71,13 +66,7 @@ const NavBar = ({ children }) => {
                 </Link>
               </ul>
             </div>
-            <div className="flex grow justify-end">
-              <input
-                className="flex h-10 w-[250px] rounded-md bg-gray-100 px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                type="text"
-                placeholder="Serach"
-              ></input>
-            </div>
+            <div className="flex grow justify-end"></div>
             <div className="ml-2 mt-2 hidden lg:block">
               <Link to={"/user-profile"}>
                 <span className="relative inline-block">
