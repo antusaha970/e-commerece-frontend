@@ -69,8 +69,6 @@ export const userSlice = createSlice({
   },
 });
 
-// export const { increment, decrement, incrementByAmount } = counterSlice.actions;
-
 export const selectLoggedInUserOrders = (state) => state.user.userOrders;
 export const selectLoggedInUserInfo = (state) => state.user.userInfo;
 

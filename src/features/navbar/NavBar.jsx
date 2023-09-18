@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCartItems } from "../cart/cartSlice";
 
 import { Menu, X } from "lucide-react";
+import { selectLoggedInUser, signOutAsync } from "../auth/authSlice";
+import { Transition } from "@headlessui/react";
 
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 const menuItems = [
   {
     name: "Home",
@@ -21,9 +26,30 @@ const menuItems = [
 const NavBar = ({ children }) => {
   const cartItems = useSelector(selectCartItems);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const user = useSelector(selectLoggedInUser);
+  const [showCartLink, setShowCartLink] = useState(false);
+  const [showAdminPanelLink, setShowAdminPanelLink] = useState(false);
+  const [showDropDownMenu, setShowDropDownMenu] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!user) {
+      setShowCartLink(true);
+    }
+    if (user && user?.role === "user") {
+      setShowCartLink(true);
+    } else {
+      setShowAdminPanelLink(true);
+      setShowCartLink(false);
+    }
+  }, [user]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+  const handleSingOut = () => {
+    dispatch(signOutAsync());
+    navigate("/login");
   };
   return (
     <>
@@ -51,34 +77,74 @@ const NavBar = ({ children }) => {
                     </Link>
                   </li>
                 ))}
-                <Link
-                  to={"/cart"}
-                  className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900"
-                >
-                  cart&nbsp;&nbsp;
-                  <ShoppingCartIcon
-                    className="h-6 w-6"
-                    aria-hidden="true"
-                  />{" "}
-                  {cartItems.length > 0 && (
-                    <span className="font-bold -mt-2 ">{cartItems.length}</span>
-                  )}
-                </Link>
+                {showCartLink && (
+                  <Link
+                    to={"/cart"}
+                    className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900"
+                  >
+                    cart&nbsp;&nbsp;
+                    <ShoppingCartIcon
+                      className="h-6 w-6"
+                      aria-hidden="true"
+                    />{" "}
+                    {cartItems.length > 0 && (
+                      <span className="font-bold -mt-2 ">
+                        {cartItems.length}
+                      </span>
+                    )}
+                  </Link>
+                )}
+                {showAdminPanelLink && (
+                  <>
+                    <Link
+                      to={"/admin"}
+                      className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900"
+                    >
+                      Admin panel
+                    </Link>
+                    <Link
+                      to={"/admin/view-orders"}
+                      className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900"
+                    >
+                      View Orders
+                    </Link>
+                  </>
+                )}
               </ul>
             </div>
             <div className="flex grow justify-end"></div>
-            <div className="ml-2 mt-2 hidden lg:block">
-              <Link to={"/user-profile"}>
+            <div className="relative">
+              <div className="ml-2 mt-2 hidden lg:block">
                 <span className="relative inline-block">
                   <img
-                    className="h-10 w-10 rounded-full"
+                    onClick={() => setShowDropDownMenu((prvState) => !prvState)}
+                    className="h-10 cursor-pointer w-10 rounded-full"
                     src="https://t3.ftcdn.net/jpg/05/16/27/58/240_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg"
                     alt="user"
                   />
                   <span className="absolute bottom-0 right-0 block h-2.5 w-2.5 rounded-full bg-green-600 ring-2 ring-white"></span>
                 </span>
-              </Link>
+                {showDropDownMenu && (
+                  <div
+                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    role="menu"
+                    aria-orientation="vertical"
+                    aria-labelledby="user-menu-button"
+                    tabIndex={-1}
+                  >
+                    <button
+                      onClick={handleSingOut}
+                      className="block px-4 py-2 text-sm text-gray-700"
+                      role="menuitem"
+                      id="user-menu-item-2"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
+
             <div className="ml-2 lg:hidden">
               <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
             </div>
@@ -119,21 +185,39 @@ const NavBar = ({ children }) => {
                             </Link>
                           </li>
                         ))}
-                        <Link
-                          to={"/cart"}
-                          className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900"
-                        >
-                          cart&nbsp;&nbsp;
-                          <ShoppingCartIcon
-                            className="h-6 w-6"
-                            aria-hidden="true"
-                          />{" "}
-                          {cartItems.length > 0 && (
-                            <span className="font-bold -mt-2 ">
-                              {cartItems.length}
-                            </span>
-                          )}
-                        </Link>
+                        {showCartLink && (
+                          <Link
+                            to={"/cart"}
+                            className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900"
+                          >
+                            cart&nbsp;&nbsp;
+                            <ShoppingCartIcon
+                              className="h-6 w-6"
+                              aria-hidden="true"
+                            />{" "}
+                            {cartItems.length > 0 && (
+                              <span className="font-bold -mt-2 ">
+                                {cartItems.length}
+                              </span>
+                            )}
+                          </Link>
+                        )}
+                        {showAdminPanelLink && (
+                          <>
+                            <Link
+                              to={"/admin"}
+                              className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900"
+                            >
+                              Admin panel
+                            </Link>
+                            <Link
+                              to={"/admin/view-orders"}
+                              className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900"
+                            >
+                              View Orders
+                            </Link>
+                          </>
+                        )}
                       </nav>
                     </div>
                     <div className="ml-3 mt-4 flex items-center space-x-2">
@@ -143,12 +227,7 @@ const NavBar = ({ children }) => {
                         alt="user"
                       />
                       <span className="flex flex-col">
-                        <Link
-                          to={"/user-profile"}
-                          className="text-sm font-medium text-gray-900"
-                        >
-                          User
-                        </Link>
+                        <button onClick={handleSingOut}>Logout</button>
                       </span>
                     </div>
                   </div>
