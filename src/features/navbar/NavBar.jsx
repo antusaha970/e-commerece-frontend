@@ -1,16 +1,14 @@
-import { useEffect, useState, Fragment } from "react";
+import { useEffect, useState } from "react";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCartItems } from "../cart/cartSlice";
 
 import { Menu, X } from "lucide-react";
-import { selectLoggedInUser, signOutAsync } from "../auth/authSlice";
-import { Transition } from "@headlessui/react";
+import { signOutAsync } from "../auth/authSlice";
+import { resetUserInfo, selectLoggedInUserInfo } from "../user/userSlice";
+import { toast } from "react-toastify";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 const menuItems = [
   {
     name: "Home",
@@ -26,21 +24,23 @@ const menuItems = [
 const NavBar = ({ children }) => {
   const cartItems = useSelector(selectCartItems);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const user = useSelector(selectLoggedInUser);
+  const user = useSelector(selectLoggedInUserInfo);
   const [showCartLink, setShowCartLink] = useState(false);
   const [showAdminPanelLink, setShowAdminPanelLink] = useState(false);
   const [showDropDownMenu, setShowDropDownMenu] = useState(false);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   useEffect(() => {
     if (!user) {
       setShowCartLink(true);
+      setShowAdminPanelLink(false);
     }
     if (user && user?.role === "user") {
       setShowCartLink(true);
     } else {
-      setShowAdminPanelLink(true);
       setShowCartLink(false);
+    }
+    if (user && user?.role === "admin") {
+      setShowAdminPanelLink(true);
     }
   }, [user]);
 
@@ -49,7 +49,17 @@ const NavBar = ({ children }) => {
   };
   const handleSingOut = () => {
     dispatch(signOutAsync());
-    navigate("/login");
+    dispatch(resetUserInfo());
+    toast.success("Successfully logged out", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
   return (
     <>
@@ -132,14 +142,26 @@ const NavBar = ({ children }) => {
                     aria-labelledby="user-menu-button"
                     tabIndex={-1}
                   >
-                    <button
-                      onClick={handleSingOut}
-                      className="block px-4 py-2 text-sm text-gray-700"
-                      role="menuitem"
-                      id="user-menu-item-2"
-                    >
-                      Logout
-                    </button>
+                    {user && (
+                      <button
+                        onClick={handleSingOut}
+                        className="block px-4 py-2 text-sm text-gray-700"
+                        role="menuitem"
+                        id="user-menu-item-2"
+                      >
+                        Logout
+                      </button>
+                    )}
+                    {!user && (
+                      <Link
+                        to={"/login"}
+                        className="block px-4 py-2 text-sm text-gray-700"
+                        role="menuitem"
+                        id="user-menu-item-2"
+                      >
+                        Login
+                      </Link>
+                    )}
                   </div>
                 )}
               </div>
@@ -227,7 +249,26 @@ const NavBar = ({ children }) => {
                         alt="user"
                       />
                       <span className="flex flex-col">
-                        <button onClick={handleSingOut}>Logout</button>
+                        {user && (
+                          <button
+                            onClick={handleSingOut}
+                            className="block px-4 py-2 text-sm text-gray-700"
+                            role="menuitem"
+                            id="user-menu-item-2"
+                          >
+                            Logout
+                          </button>
+                        )}
+                        {!user && (
+                          <Link
+                            to={"/login"}
+                            className="block px-4 py-2 text-sm text-gray-700"
+                            role="menuitem"
+                            id="user-menu-item-2"
+                          >
+                            Login
+                          </Link>
+                        )}
                       </span>
                     </div>
                   </div>
