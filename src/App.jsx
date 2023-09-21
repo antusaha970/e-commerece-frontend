@@ -28,11 +28,7 @@ import { ToastContainer } from "react-toastify";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      // <Protected>
-      <Home />
-      // </Protected>
-    ),
+    element: <Home />,
   },
   {
     path: "/admin",
@@ -68,11 +64,7 @@ const router = createBrowserRouter([
   },
   {
     path: "product-details/:id",
-    element: (
-      // <Protected>
-      <ProductDetailsPage />
-      // </Protected>
-    ),
+    element: <ProductDetailsPage />,
   },
   {
     path: "/admin/product-details/:id",

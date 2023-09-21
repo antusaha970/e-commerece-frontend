@@ -18,6 +18,10 @@ const menuItems = [
     name: "Profile",
     href: "/user-profile",
   },
+  {
+    name: "Orders",
+    href: "/user-orders",
+  },
 ];
 
 // eslint-disable-next-line react/prop-types

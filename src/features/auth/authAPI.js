@@ -1,3 +1,4 @@
+import axios from "axios";
 import { client } from "../../app/utils";
 
 //  Function for creating user
@@ -54,6 +55,12 @@ export function checkAuth() {
 }
 
 // Function for sign out user
-export function signOut() {
-  return new Promise((resolve) => resolve({ data: "success" }));
+export async function signOut() {
+  try {
+    const response = axios.get("/auth/logout");
+    return response?.data;
+  } catch (error) {
+    console.error(error);
+    return error.message;
+  }
 }
