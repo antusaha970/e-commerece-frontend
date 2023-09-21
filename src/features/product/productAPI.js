@@ -70,6 +70,16 @@ export async function fetchProductById(id) {
     return error.message;
   }
 }
+// For fetching suggested products by category
+export async function fetchSuggestedProduct(category) {
+  try {
+    const response = await client.get(`/products/suggestion/${category} `);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return error.message;
+  }
+}
 
 // For fetching all brands
 export async function fetchAllBrands() {

@@ -7,6 +7,7 @@ import {
   fetchFilterProducts,
   fetchProductById,
   fetchSearchedProducts,
+  fetchSuggestedProduct,
   updateProduct,
 } from "./productAPI";
 
@@ -15,8 +16,10 @@ const initialState = {
   brands: [],
   categories: [],
   status: "idle",
+  suggestedProductLoadingStatus: "idle",
   totalItems: 0,
   selectedProduct: null,
+  suggestedProducts: [],
 };
 
 export const getAllProducts = createAsyncThunk(
@@ -31,6 +34,14 @@ export const getProductByIdAsync = createAsyncThunk(
   "product/fetchProductById",
   async (id) => {
     const response = await fetchProductById(id);
+    return response;
+  }
+);
+
+export const getSuggestedProductsAsync = createAsyncThunk(
+  "product/fetchSuggestedProduct",
+  async (category) => {
+    const response = await fetchSuggestedProduct(category);
     return response;
   }
 );
@@ -155,6 +166,16 @@ export const productSlice = createSlice({
       .addCase(getProductByIdAsync.rejected, (state) => {
         state.status = "failed";
       })
+      .addCase(getSuggestedProductsAsync.pending, (state) => {
+        state.suggestedProductLoadingStatus = "loading";
+      })
+      .addCase(getSuggestedProductsAsync.fulfilled, (state, action) => {
+        state.suggestedProductLoadingStatus = "idle";
+        state.suggestedProducts = action.payload;
+      })
+      .addCase(getSuggestedProductsAsync.rejected, (state) => {
+        state.suggestedProductLoadingStatus = "failed";
+      })
       .addCase(createProductAsync.pending, (state) => {
         state.status = "loading";
       })
@@ -190,5 +211,8 @@ export const selectAllBrands = (state) => state.product.brands;
 export const selectAllCategories = (state) => state.product.categories;
 export const selectProductById = (state) => state.product.selectedProduct;
 export const selectProductStatus = (state) => state.product.status;
+export const selectSuggestedProductLoadStatus = (state) =>
+  state.product.suggestedProductLoadingStatus;
+export const selectSuggestProducts = (state) => state.product.suggestedProducts;
 
 export default productSlice.reducer;
